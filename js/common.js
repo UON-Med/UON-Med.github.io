@@ -8,8 +8,16 @@ $( document ).ready(function() {
       $(this).children(':first').unwrap();
       $('.sidenav').sidenav();
       $('.acronym').hover(
-          function () { $('.nameFull').removeClass('hiddenAcronym'); },
-          function () { $('.nameFull').addClass('hiddenAcronym'); }
+        function () {
+          if($(window).width() >= 720) {
+            $('.nameFull').removeClass('hiddenAcronym');
+          }
+        },
+        function () {
+          if($(window).width() >= 720) {
+            $('.nameFull').addClass('hiddenAcronym');
+          }
+        }
       );
     });
   });
