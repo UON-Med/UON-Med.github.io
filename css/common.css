@@ -1,0 +1,31 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+span {
+    display: inline-block;
+    overflow: hidden;
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+}
+.wen {
+    width: 36px;
+}
+.illiams {
+    width: 160px;
+}
+span.hiddenAcronym {
+    width: 0px;
+    opacity: 0;
+}

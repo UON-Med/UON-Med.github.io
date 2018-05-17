@@ -5,3 +5,8 @@ $(function(){
     $(this).load(file);
   });
 });
+
+$('.acronym').hover(
+    function () { $('.nameFull').removeClass('hiddenAcronym'); },
+    function () { $('.nameFull').addClass('hiddenAcronym'); }
+);
