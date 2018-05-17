@@ -1,3 +1,19 @@
+function positionSeahorse() {
+  var headerHeight = $('#nav-bar').height();
+  var logoHeight = headerHeight*0.8;
+  var logoMargin = headerHeight*0.1;
+  $('.seahorse').height(logoHeight);
+  $('.seahorse').width(logoHeight);
+  $('.seahorse').css('margin-bottom',logoMargin+'px');
+
+  // Makes seahorse prominent on small screens
+  if($(window).width() < 300) {
+    $('.initial').hide(); 
+  } else {
+    $('.initial').show();     
+  }
+}
+
 $( document ).ready(function() {
   var includes = $('[data-include]');
   jQuery.each(includes, function(){
@@ -41,6 +57,11 @@ $( document ).ready(function() {
               $img.replaceWith($svg);
           }, 'xml');
       });
+      positionSeahorse()
     });
   });
+});
+
+$( window ).resize(function() {
+  positionSeahorse()
 });
