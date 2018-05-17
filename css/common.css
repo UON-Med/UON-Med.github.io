@@ -6,10 +6,10 @@
  */
 
 .icon-block {
-  padding: 0 15px;
+    padding: 0 15px;
 }
 .icon-block .material-icons {
-	font-size: inherit;
+    font-size: inherit;
 }
 
 span {
@@ -27,6 +27,13 @@ span {
 }
 .rogram {
     width: 96px;
+}
+.seahorse {
+    display: block;
+    height: 46px;
+    width: 46px;
+    margin-bottom: 8px;
+    fill: #FFFFFF;
 }
 
 span.hiddenAcronym {
