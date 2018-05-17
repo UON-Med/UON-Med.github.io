@@ -19,12 +19,16 @@ span {
     -moz-transition: all ease 0.5s;
     -webkit-transition: all ease 0.5s;
 }
-.wen {
-    width: 36px;
+.oint {
+    width: 54px;
 }
-.illiams {
-    width: 160px;
+.edical {
+    width: 84px;
 }
+.rogram {
+    width: 96px;
+}
+
 span.hiddenAcronym {
     width: 0px;
     opacity: 0;

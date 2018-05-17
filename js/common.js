@@ -1,3 +1,11 @@
+(function($){
+  $(function(){
+
+    $('.sidenav').sidenav();
+
+  }); // end of document ready
+})(jQuery); // end of jQuery name space
+
 $(function(){
   var includes = $('[data-include]');
   jQuery.each(includes, function(){
