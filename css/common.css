@@ -52,3 +52,15 @@ span.hiddenAcronym {
 .modal {
     outline: none !important;
 }
+
+.navbar-fixed {
+    outline: none !important;
+}
+
+nav {
+    outline: none !important;
+}
+
+.container {
+    outline: none !important;
+}
