@@ -40,3 +40,15 @@ span.hiddenAcronym {
     width: 0px;
     opacity: 0;
 }
+
+.gallery-wrapper {
+    display: block;
+}
+
+.dropdown-trigger {
+    outline: none !important;
+}
+
+.modal {
+    outline: none !important;
+}

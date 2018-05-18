@@ -1,46 +1,97 @@
 <!-- Dropdown structure -->
 <ul id="overflow" class="dropdown-content">
-  <li><a href="#!">Login</a></li>
-  <li><a href="#!">Settings</a></li>
-  <li><a href="#!">About</a></li>
+  <!-- Modal Trigger -->
+  <li><a class="waves-effect modal-trigger" href="#login-modal">Login</a></li>
+  <li><a class="waves-effect" href="#!">Settings</a></li>
+  <li><a class="waves-effect" href="#!">About</a></li>
+</ul>
+
+<!-- Modal Structure -->
+<div id="login-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Login</h4>
+    <p>Input details to customise the JMP app</p>
+
+    <form class="s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="name" type="text" class="validate">
+          <label for="name">Name</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input id="phone" type="tel" class="validate">
+          <label for="phone">Phone</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">verified_user</i>
+          <input id="id" type="tel" class="validate">
+          <label for="id">Student Number</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">group</i>
+          <input id="pbl" type="tel" class="validate">
+          <label for="pbl">PBL Group</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">local_hospital</i>
+          <input id="clin" type="tel" class="validate">
+          <label for="clin">Clinicals Group</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Enter</a>
+  </div>
+</div>
+
+
+<!-- Mobile nav -->
+<ul id="nav-mobile" class="sidenav">
+  <!-- <li><a href="#">2018-2022</a></li> -->
+  <li><div class="user-view">
+    <div class="background">
+      <img src="images/bar-beach.jpg" style="height:160px; float: right; margin-right: -40%;">
+    </div>
+    <a href="#user"><img class="circle" src="images/seahorse.svg" style="border-radius: 50%;"></a>
+    <a href="#name"><span class="white-text name">Unregistered user</span></a>
+    <a href="#email"><span class="white-text email">c#######@uon.edu.au</span></a>
+  </div></li>
+  <li><a class="waves-effect" href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a class="waves-effect" href="#!">Second Link</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Tools</a></li>
+  <li><a class="waves-effect" href="#!">2018-2022</a></li>
 </ul>
 
 <!-- Nav bar -->
-<nav class="blue-grey darken-4" role="navigation" id="nav-bar">
-  <div class="nav-wrapper container">
-    <a id="logo-container" href="#" class="brand-logo">
-      <div class='acronym'>
-        <span id='logo-span'><img class='seahorse' src="../images/seahorse.svg"></img></span>
-        <span class='initial'>J</span><span class='hiddenAcronym nameFull oint'>oint</span>
-        <span class='initial'>M</span><span class='hiddenAcronym nameFull edical'>edical</span>
-        <span class='initial'>P</span><span class='hiddenAcronym nameFull rogram'>rogram</span>
-      </div>
-    </a>
-    <ul class="right">
-      <!-- Desktop nav -->
-      <li class="hide-on-med-and-down"><a href="#">2018-2022</a></li>
-      
-      <!-- Overflow menu dropdown trigger (desktop & mobile) -->
-      <li><a class="dropdown-trigger" href="#!" data-target="overflow"><i class="material-icons right">more_vert</i></a></li>
-    </ul>
-
-    <!-- Mobile nav -->
-    <ul id="nav-mobile" class="sidenav">
-      <!-- <li><a href="#">2018-2022</a></li> -->
-      <li><div class="user-view">
-        <div class="background">
-          <img src="images/bar-beach.jpg" style="height:160px; float: right; margin-right: -40%;">
+<div class="navbar-fixed">
+  <nav class="blue-grey darken-4" role="navigation" id="nav-bar">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">
+        <div class='acronym'>
+          <span id='logo-span'><img class='seahorse' src="../images/seahorse.svg"></img></span>
+          <span class='initial'>J</span><span class='hiddenAcronym nameFull oint'>oint</span>
+          <span class='initial'>M</span><span class='hiddenAcronym nameFull edical'>edical</span>
+          <span class='initial'>P</span><span class='hiddenAcronym nameFull rogram'>rogram</span>
         </div>
-        <a href="#user"><img class="circle" src="images/seahorse.svg" style="border-radius: 50%;"></a>
-        <a href="#name"><span class="white-text name">Unregistered user</span></a>
-        <a href="#email"><span class="white-text email">c#######@uon.edu.au</span></a>
-      </div></li>
-      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-      <li><a href="#!">Second Link</a></li>
-      <li><div class="divider"></div></li>
-      <li><a class="subheader">Tools</a></li>
-      <li><a class="waves-effect" href="#!">2018-2022</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  </div>
-</nav>
+      </a>
+      <ul class="right">
+        <!-- Desktop nav -->
+        <li class="hide-on-med-and-down"><a href="#">2018-2022</a></li>
+        
+        <!-- Overflow menu dropdown trigger (desktop & mobile) -->
+        <li><a class="dropdown-trigger" href="#!" data-target="overflow">&nbsp;<i class="material-icons right">more_vert</i></a></li>
+      </ul>
+
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</div>

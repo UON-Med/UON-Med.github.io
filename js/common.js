@@ -25,9 +25,13 @@ $( document ).ready(function() {
     $(this).load(file, function() {
       // Removes the wrapping template div
       $(this).children(':first').unwrap();
+
       // Initialises materialize css elements
       $('.sidenav').sidenav();
       $('.dropdown-trigger').dropdown();
+      $('.modal').modal();
+      $('select').formSelect();
+
       // Animates JMP acronym in header
       $('.acronym').hover(
         function () {
