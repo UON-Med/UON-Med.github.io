@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var dataCacheName = 'JMPdata-v0.1';
-var cacheName = 'JMPpwa-v0.1';
+var dataCacheName = 'JMPdata-v0.2';
+var cacheName = 'JMPpwa-v0.2';
 var filesToCache = [
   '/',
   '/index.html',
