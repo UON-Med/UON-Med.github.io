@@ -18,11 +18,17 @@ $( document ).ready(function() {
   var includes = $('[data-include]');
   jQuery.each(includes, function(){
     var file = 'views/' + $(this).data('include') + '.html';
+    // ---------------------------------------------------------------
+    // Everything below here is doen in callback for imported content
+    // ie content imported must have its js bindings done here
+    // ---------------------------------------------------------------
     $(this).load(file, function() {
-      // Everything below here is doen in callback for imported content
-      // ie content imported must have its js bindings done here
+      // Removes the wrapping template div
       $(this).children(':first').unwrap();
+      // Initialises materialize css elements
       $('.sidenav').sidenav();
+      $('.dropdown-trigger').dropdown();
+      // Animates JMP acronym in header
       $('.acronym').hover(
         function () {
           if($(window).width() >= 840) {
@@ -35,6 +41,7 @@ $( document ).ready(function() {
           }
         }
       );
+
       // Replaces all <img source=".svg"></img> into inline svg
       $('img[src$=".svg"]').each(function() {
           var $img = jQuery(this);

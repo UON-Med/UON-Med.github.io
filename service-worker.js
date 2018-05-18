@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var dataCacheName = 'JMP-v1';
-var cacheName = 'JMPpwa-final-1';
+var dataCacheName = 'JMPdata-v0.1';
+var cacheName = 'JMPpwa-v0.1';
 var filesToCache = [
   '/',
   '/index.html',
+
+  '/js/jquery-3.3.1.min.js',
   '/js/materialize.min.js',
   '/js/common.js',
   '/js/index.js',
@@ -26,6 +28,7 @@ var filesToCache = [
   '/css/index.css',
 
   '/images/seahorse.svg',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
 ];
 
 self.addEventListener('install', function(e) {

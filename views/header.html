@@ -1,3 +1,11 @@
+<!-- Dropdown structure -->
+<ul id="overflow" class="dropdown-content">
+  <li><a href="#!">Login</a></li>
+  <li><a href="#!">Settings</a></li>
+  <li><a href="#!">About</a></li>
+</ul>
+
+<!-- Nav bar -->
 <nav class="blue-grey darken-4" role="navigation" id="nav-bar">
   <div class="nav-wrapper container">
     <a id="logo-container" href="#" class="brand-logo">
@@ -8,12 +16,30 @@
         <span class='initial'>P</span><span class='hiddenAcronym nameFull rogram'>rogram</span>
       </div>
     </a>
-    <ul class="right hide-on-med-and-down">
-      <li><a href="#">2018-2022</a></li>
+    <ul class="right">
+      <!-- Desktop nav -->
+      <li class="hide-on-med-and-down"><a href="#">2018-2022</a></li>
+      
+      <!-- Overflow menu dropdown trigger (desktop & mobile) -->
+      <li><a class="dropdown-trigger" href="#!" data-target="overflow"><i class="material-icons right">more_vert</i></a></li>
     </ul>
 
+    <!-- Mobile nav -->
     <ul id="nav-mobile" class="sidenav">
-      <li><a href="#">2018-2022</a></li>
+      <!-- <li><a href="#">2018-2022</a></li> -->
+      <li><div class="user-view">
+        <div class="background">
+          <img src="images/bar-beach.jpg" style="height:160px; float: right; margin-right: -40%;">
+        </div>
+        <a href="#user"><img class="circle" src="images/seahorse.svg" style="border-radius: 50%;"></a>
+        <a href="#name"><span class="white-text name">Unregistered user</span></a>
+        <a href="#email"><span class="white-text email">c#######@uon.edu.au</span></a>
+      </div></li>
+      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+      <li><a href="#!">Second Link</a></li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Tools</a></li>
+      <li><a class="waves-effect" href="#!">2018-2022</a></li>
     </ul>
     <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
   </div>
