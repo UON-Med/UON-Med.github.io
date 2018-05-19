@@ -15,7 +15,7 @@
 const buildNumber = '0.2.3'
 
 var dataCacheName = 'JMPdata-v' + buildNumber;
-var cacheName = 'JMPpwa-v' + versionNumber;
+var cacheName = 'JMPpwa-v' + buildNumber;
 var filesToCache = [
   '/',
   '/index.html',
