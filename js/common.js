@@ -29,6 +29,10 @@ function hideAcronym() {
   }
 }
 
+function aboutToast() {
+  M.toast({html: 'Version: 10:49pm, 19 May 2018', classes: 'rounded'});
+}
+
 $( document ).ready(function() {
   var includes = $('[data-include]');
   jQuery.each(includes, function(){
