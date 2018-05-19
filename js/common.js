@@ -1,4 +1,4 @@
-const buildDate = '2:54am, 20 May 2018';
+const buildDate = '3:03am, 20 May 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -148,7 +148,7 @@ $( document ).ready(function() {
   });
 });
 
-document.addEventListener("scroll", function(e) {
+$(document).on("scroll", function() {
   if(isAtTop()) {
     showAcronym();
     $('.tabs').addClass('collapsed-tabs');
@@ -166,9 +166,9 @@ document.addEventListener("scroll", function(e) {
     expandNav();
   }
   position = scroll;
-}, {passive: true});
+});
 
-document.addEventListener("resize", function(e) {
+$( window ).resize(function() {
   // logoLeftMargin = $('.acronym').width() - $('#logo-span').width();
   positionSeahorse()
   if(isMobile()) {
@@ -176,7 +176,7 @@ document.addEventListener("resize", function(e) {
   } else if(isAtTop()) {
     $('.nameFull').removeClass('hiddenAcronym');
   }
-}, {passive: true});
+});
 
 
 // PWA Service Worker registration
