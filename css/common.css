@@ -6,14 +6,27 @@
  */
 
 div {
-  outline: none !important;
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+    outline: none !important;
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+html {
+    background-color: #263238;
+}
+
+body {
+    overscroll-behavior-y: contain;
+    background-color: white;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .navbar-fixed {
@@ -33,6 +46,9 @@ span {
     transition: all ease 0.5s;
     -moz-transition: all ease 0.5s;
     -webkit-transition: all ease 0.5s;
+}
+div.acronym {
+    white-space: nowrap;
 }
 .oint {
     width: 54px;

@@ -1,8 +1,8 @@
-const buildDate = '1:39am, 20 May 2018';
+const buildDate = '2:30am, 20 May 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
-var logoWidth = 0;
+var logoLeftMargin = 0;
 
 var position = $(window).scrollTop();
 
@@ -36,16 +36,25 @@ function expandNav() {
 function positionSeahorse() {
   var headerHeight = $('.nav-wrapper').height();
   var logoHeight = headerHeight*0.8;
-  var logoMargin = headerHeight*0.1;
+  var logoBottomMargin = headerHeight*0.1;
   $('.seahorse').height(logoHeight);
   $('.seahorse').width(logoHeight);
-  $('.seahorse').css('margin-bottom',logoMargin+'px');
+  $('.seahorse').css('margin-bottom',logoBottomMargin+'px');
 
   // Makes seahorse prominent on small screens
   if($(window).width() < 300) {
-    $('.initial').hide(); 
+    $('.initial').hide();
+    $('#logo-span').attr("style","margin-left: " + logoLeftMargin + "px;");
   } else {
-    $('.initial').show();     
+    $('.initial').show();
+  }
+}
+
+function centreSeahorse() {
+  if(!isAtTop()) {
+    $('#logo-span').attr("style","margin-left: " + logoLeftMargin + "px;");
+  } else if($(window).width() >= 300) {
+    $('#logo-span').attr("style","margin-left: 0px;");
   }
 }
 
@@ -55,11 +64,7 @@ function showAcronym() {
     $('#logo-span').attr("style","margin-left: 0px;");
   } else {
     $('.initial').removeClass('hiddenInitial');
-    if(!isAtTop()) {
-      $('#logo-span').attr("style","margin-left: " + logoWidth + "px;");
-    } else {
-      $('#logo-span').attr("style","margin-left: 0px;");      
-    }
+    centreSeahorse();
   }
 }
 
@@ -71,11 +76,7 @@ function hideAcronym() {
     }
   } else {
     $('.initial').addClass('hiddenInitial');
-    if(!isAtTop()) {
-      $('#logo-span').attr("style","margin-left: " + logoWidth + "px;");
-    } else {
-      $('#logo-span').attr("style","margin-left: 0px;");
-    }
+    centreSeahorse();
   }
 }
 
@@ -97,7 +98,7 @@ $( document ).ready(function() {
     // ie content imported must have its js bindings done here
     // ---------------------------------------------------------------
     $(this).load(file, function() {
-      logoWidth = $('.acronym').width() - $('#logo-span').width();
+      logoLeftMargin = $('.acronym').width() - $('#logo-span').width();
       // Removes the wrapping template div
       $(this).children(':first').unwrap();
 
@@ -168,6 +169,7 @@ $(document).on("scroll", function() {
 });
 
 $( window ).resize(function() {
+  // logoLeftMargin = $('.acronym').width() - $('#logo-span').width();
   positionSeahorse()
   if(isMobile()) {
     $('.nameFull').addClass('hiddenAcronym');
