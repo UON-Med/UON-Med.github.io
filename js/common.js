@@ -1,5 +1,10 @@
+const buildDate = '1:39am, 20 May 2018';
+
 const tooSmallForJMP = 850;
-const atTopOfPage = 50;
+const atTopOfPage = 100;
+var logoWidth = 0;
+
+var position = $(window).scrollTop();
 
 function isMobile() {
   if($(window).width() < tooSmallForJMP) {
@@ -17,8 +22,19 @@ function isAtTop() {
   }
 }
 
+function collapseNav() {
+  $('.tabs').addClass('collapsed-tabs');
+  $('#nav-bar').addClass('collapsed-nav');
+}
+
+function expandNav() {
+  $('.tabs').removeClass('collapsed-tabs');
+  $('#nav-bar').removeClass('collapsed-nav');
+}
+
+
 function positionSeahorse() {
-  var headerHeight = $('#nav-bar').height();
+  var headerHeight = $('.nav-wrapper').height();
   var logoHeight = headerHeight*0.8;
   var logoMargin = headerHeight*0.1;
   $('.seahorse').height(logoHeight);
@@ -36,17 +52,40 @@ function positionSeahorse() {
 function showAcronym() {
   if(!isMobile()) {
     $('.nameFull').removeClass('hiddenAcronym');
+    $('#logo-span').attr("style","margin-left: 0px;");
+  } else {
+    $('.initial').removeClass('hiddenInitial');
+    if(!isAtTop()) {
+      $('#logo-span').attr("style","margin-left: " + logoWidth + "px;");
+    } else {
+      $('#logo-span').attr("style","margin-left: 0px;");      
+    }
   }
 }
 
 function hideAcronym() {
-  if(!isMobile() && !isAtTop()) {
-    $('.nameFull').addClass('hiddenAcronym');
+  if(!isMobile()) {
+    $('#logo-span').attr("style","margin-left: 0px;");
+    if(!isAtTop()) {
+      $('.nameFull').addClass('hiddenAcronym');
+    }
+  } else {
+    $('.initial').addClass('hiddenInitial');
+    if(!isAtTop()) {
+      $('#logo-span').attr("style","margin-left: " + logoWidth + "px;");
+    } else {
+      $('#logo-span').attr("style","margin-left: 0px;");
+    }
   }
 }
 
 function aboutToast() {
-  M.toast({html: 'Version: 11:24pm, 19 May 2018', classes: 'rounded'});
+  if(isMobile()) {
+    var classes = '';
+  } else {
+    var classes = 'rounded'
+  }
+  M.toast({html: 'Version: ' + buildDate, classes: classes});
 }
 
 $( document ).ready(function() {
@@ -58,6 +97,7 @@ $( document ).ready(function() {
     // ie content imported must have its js bindings done here
     // ---------------------------------------------------------------
     $(this).load(file, function() {
+      logoWidth = $('.acronym').width() - $('#logo-span').width();
       // Removes the wrapping template div
       $(this).children(':first').unwrap();
 
@@ -66,6 +106,7 @@ $( document ).ready(function() {
       $('.dropdown-trigger').dropdown();
       $('.modal').modal();
       $('select').formSelect();
+      $('.tabs').tabs();
 
       showAcronym();
 
@@ -107,11 +148,23 @@ $( document ).ready(function() {
 });
 
 $(document).on("scroll", function() {
-  if(!isAtTop()) {
-    hideAcronym();
-  } else {
+  if(isAtTop()) {
     showAcronym();
+    $('.tabs').addClass('collapsed-tabs');
+  } else {
+    hideAcronym();
+    $('.tabs').removeClass('collapsed-tabs');
   }
+
+  var scroll = $(window).scrollTop();
+  if(scroll > position) {
+    // Scrolling downwards
+    collapseNav();
+  } else {
+    // Scrolling upwards
+    expandNav();
+  }
+  position = scroll;
 });
 
 $( window ).resize(function() {

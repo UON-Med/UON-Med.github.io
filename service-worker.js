@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const buildNumber = '0.2.3.2'
+const buildNumber = '0.2.3.3'
 
 var dataCacheName = 'JMPdata-v' + buildNumber;
 var cacheName = 'JMPpwa-v' + buildNumber;
@@ -28,9 +28,12 @@ var filesToCache = [
   '/css/materialize.min.css',
   '/css/common.css',
   '/css/index.css',
+  '/css/icons.css',
+
+  '/fonts/icons.woff2',
 
   '/images/seahorse.svg',
-  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  '/images/bar-beach.jpg',
 ];
 
 self.addEventListener('install', function(e) {

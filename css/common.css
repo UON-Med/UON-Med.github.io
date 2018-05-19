@@ -55,6 +55,10 @@ span.hiddenAcronym {
     width: 0px;
     opacity: 0;
 }
+span.hiddenInitial {
+    opacity: 0;
+}
+
 
 .gallery-wrapper {
     display: block;
@@ -74,8 +78,30 @@ span.hiddenAcronym {
 
 nav {
     outline: none !important;
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    padding-top: 20px;
 }
 
 .container {
     outline: none !important;
+}
+
+.tabs {
+    transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+}
+
+.collapsed-nav {
+    padding-top: 2px;
+}
+
+.collapsed-tabs {
+    height: 0px;
+}
+
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: rgba(246, 178, 181, 0.0);
 }
