@@ -1,6 +1,22 @@
 const tooSmallForJMP = 850;
 const atTopOfPage = 50;
 
+function isMobile() {
+  if($(window).width() < tooSmallForJMP) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isAtTop() {
+  if($(document).scrollTop() > atTopOfPage) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 function positionSeahorse() {
   var headerHeight = $('#nav-bar').height();
   var logoHeight = headerHeight*0.8;
@@ -18,13 +34,13 @@ function positionSeahorse() {
 }
 
 function showAcronym() {
-  if($(window).width() >= tooSmallForJMP) {
+  if(!isMobile()) {
     $('.nameFull').removeClass('hiddenAcronym');
   }
 }
 
 function hideAcronym() {
-  if($(window).width() >= tooSmallForJMP && $(document).scrollTop() > 100) {
+  if(!isMobile() && !isAtTop()) {
     $('.nameFull').addClass('hiddenAcronym');
   }
 }
@@ -91,7 +107,7 @@ $( document ).ready(function() {
 });
 
 $(document).on("scroll", function() {
-  if($(document).scrollTop() > atTopOfPage) {
+  if(!isAtTop()) {
     hideAcronym();
   } else {
     showAcronym();
@@ -100,9 +116,9 @@ $(document).on("scroll", function() {
 
 $( window ).resize(function() {
   positionSeahorse()
-  if($(window).width() < tooSmallForJMP) {
+  if(isMobile()) {
     $('.nameFull').addClass('hiddenAcronym');
-  } else if($(document).scrollTop() <= atTopOfPage) {
+  } else if(isAtTop()) {
     $('.nameFull').removeClass('hiddenAcronym');
   }
 });

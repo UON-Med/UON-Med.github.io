@@ -17,7 +17,7 @@ div {
 }
 
 .navbar-fixed {
-    position: absolute;
+    top: -1px;
 }
 
 .icon-block {
