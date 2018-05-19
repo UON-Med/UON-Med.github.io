@@ -46,7 +46,7 @@ function hideAcronym() {
 }
 
 function aboutToast() {
-  M.toast({html: 'Version: 10:49pm, 19 May 2018', classes: 'rounded'});
+  M.toast({html: 'Version: 11:24pm, 19 May 2018', classes: 'rounded'});
 }
 
 $( document ).ready(function() {
@@ -101,7 +101,7 @@ $( document ).ready(function() {
               $img.replaceWith($svg);
           }, 'xml');
       });
-      positionSeahorse()
+      positionSeahorse();
     });
   });
 });
