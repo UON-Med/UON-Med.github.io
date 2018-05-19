@@ -21,12 +21,9 @@ html {
 }
 
 body {
+    overflow: auto;
     overscroll-behavior-y: contain;
     background-color: white;
-}
-
-::-webkit-scrollbar {
-    display: none;
 }
 
 .navbar-fixed {
