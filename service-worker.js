@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const buildNumber = '0.2.3.7'
+const buildNumber = '0.2.3.8'
 
 var dataCacheName = 'JMPdata-v' + buildNumber;
 var cacheName = 'JMPpwa-v' + buildNumber;
@@ -53,6 +53,7 @@ self.addEventListener('activate', function(e) {
       return Promise.all(keyList.map(function(key) {
         if (key !== cacheName && key !== dataCacheName) {
           console.log('[ServiceWorker] Removing old cache', key);
+            M.toast({html: 'Updated to v' + buildNumber, classes: $(window).width() < 850 ? '' : 'rounded'});
           return caches.delete(key);
         }
       }));

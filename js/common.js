@@ -1,4 +1,4 @@
-const buildDate = '3:03am, 20 May 2018';
+const buildDate = '3:08am, 20 May 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -81,12 +81,7 @@ function hideAcronym() {
 }
 
 function aboutToast() {
-  if(isMobile()) {
-    var classes = '';
-  } else {
-    var classes = 'rounded'
-  }
-  M.toast({html: 'Version: ' + buildDate, classes: classes});
+  M.toast({html: 'Version: ' + buildDate, classes: isMobile() ? '' : 'rounded'});
 }
 
 $( document ).ready(function() {
