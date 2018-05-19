@@ -1,3 +1,6 @@
+const tooSmallForJMP = 850;
+const atTopOfPage = 50;
+
 function positionSeahorse() {
   var headerHeight = $('#nav-bar').height();
   var logoHeight = headerHeight*0.8;
@@ -11,6 +14,18 @@ function positionSeahorse() {
     $('.initial').hide(); 
   } else {
     $('.initial').show();     
+  }
+}
+
+function showAcronym() {
+  if($(window).width() >= tooSmallForJMP) {
+    $('.nameFull').removeClass('hiddenAcronym');
+  }
+}
+
+function hideAcronym() {
+  if($(window).width() >= tooSmallForJMP && $(document).scrollTop() > 100) {
+    $('.nameFull').addClass('hiddenAcronym');
   }
 }
 
@@ -32,17 +47,15 @@ $( document ).ready(function() {
       $('.modal').modal();
       $('select').formSelect();
 
+      showAcronym();
+
       // Animates JMP acronym in header
       $('.acronym').hover(
         function () {
-          if($(window).width() >= 840) {
-            $('.nameFull').removeClass('hiddenAcronym');
-          }
+          showAcronym();
         },
         function () {
-          if($(window).width() >= 840) {
-            $('.nameFull').addClass('hiddenAcronym');
-          }
+          hideAcronym();
         }
       );
 
@@ -73,8 +86,21 @@ $( document ).ready(function() {
   });
 });
 
+$(document).on("scroll", function() {
+  if($(document).scrollTop() > atTopOfPage) {
+    hideAcronym();
+  } else {
+    showAcronym();
+  }
+});
+
 $( window ).resize(function() {
   positionSeahorse()
+  if($(window).width() < tooSmallForJMP) {
+    $('.nameFull').addClass('hiddenAcronym');
+  } else if($(document).scrollTop() <= atTopOfPage) {
+    $('.nameFull').removeClass('hiddenAcronym');
+  }
 });
 
 
