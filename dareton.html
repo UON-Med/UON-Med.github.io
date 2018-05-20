@@ -32,8 +32,7 @@
   </div>
 
   <div id="tab1" data-tab="Intro" class="col s12">
-    <!-- Banner content -->
-    <div class="section no-pad-bot" id="index-banner">
+    <div class="section no-pad-bot">
       <div class="container">
         <br><br>
         <h1 class="header center grey-text text-darken-4">Dareton Diabetes Camp</h1>
@@ -49,10 +48,37 @@
   </div>
 
   <div id="tab2" data-tab="Community" class="col s12">
-    <div class="container">
-      <div class="gallery-wrapper">
-        <img class="materialboxed" width="100%" src="images/bar-beach.jpg">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <h2 class="header center grey-text text-darken-4">Community demographics</h2>
+        <div class="row center">
+          <h5 class="header col s12 light">Location</h5>
+            <div id="map"></div>
+            <script>
+              var map;
+              function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                  center: {lat: -34.0943674, lng: 142.0400808},
+                  zoom: 13,
+                });
+              }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1UQT5GWfKb0HcDGaZ21kAL-ksv89hd0g&callback=initMap"
+            async defer></script>
+        </div>
+        <div class="row center">
+          <h5 class="header col s12 light">Ethnic/Gender profile</h5>
+        </div>
+        <div class="row center">
+          <a href="https://www.chacams.org/" id="download-button" class="btn-large waves-effect waves-light grey darken-4">CHAC Website</a>
+        </div>
+        <br><br>
       </div>
+    </div>
+
+      <!-- <div class="gallery-wrapper"> -->
+        <!-- <img class="materialboxed" width="100%" src="images/bar-beach.jpg"> -->
+      <!-- </div> -->
     </div>  
   </div>
   <div id="tab3" data-tab="Tab 3" class="col s12">
