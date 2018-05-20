@@ -1,4 +1,4 @@
-const buildDate = '3:19am, 20 May 2018';
+const buildDate = '11:20am, 20 May 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -32,8 +32,14 @@ function expandNav() {
   $('#nav-bar').removeClass('collapsed-nav');
 }
 
+function calcLogoLeftMargin() {
+  $('#logo-span').attr("style","margin-left: 0px;");
+  return $('.acronym').width() - $('#logo-span').width();
+}
+
 
 function positionSeahorse() {
+  logoLeftMargin = calcLogoLeftMargin();
   var headerHeight = $('.nav-wrapper').height();
   var logoHeight = headerHeight*0.8;
   var logoBottomMargin = headerHeight*0.1;
@@ -93,7 +99,7 @@ $( document ).ready(function() {
     // ie content imported must have its js bindings done here
     // ---------------------------------------------------------------
     $(this).load(file, function() {
-      logoLeftMargin = $('.acronym').width() - $('#logo-span').width();
+      logoLeftMargin = calcLogoLeftMargin();
       // Removes the wrapping template div
       $(this).children(':first').unwrap();
 
@@ -164,8 +170,7 @@ $(document).on("scroll", function() {
 });
 
 $( window ).resize(function() {
-  // logoLeftMargin = $('.acronym').width() - $('#logo-span').width();
-  positionSeahorse()
+  positionSeahorse();
   if(isMobile()) {
     $('.nameFull').addClass('hiddenAcronym');
   } else if(isAtTop()) {
