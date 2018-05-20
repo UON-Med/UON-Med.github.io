@@ -37,7 +37,7 @@ body {
     font-size: inherit;
 }
 
-span {
+span.logo {
     display: inline-block;
     overflow: hidden;
     transition: all ease 0.5s;

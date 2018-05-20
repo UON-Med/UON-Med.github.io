@@ -53,13 +53,31 @@
         <h2 class="header center grey-text text-darken-4">Community demographics</h2>
         <div class="row center">
           <h5 class="header col s12 light">Location</h5>
-          <div id="map" style="height: 400px;"></div>
+          <div id="map" class="col s12" style="height: 500px;"></div>
         </div>
         <div class="row center">
           <h5 class="header col s12 light">Ethnic/Gender profile</h5>
+          <canvas id="pie-area"></canvas>
+          <div class="switch">
+            <label>
+              Dareton
+              <input type="checkbox" onclick="pieToggleData()">
+              <span class="lever"></span>
+              Australia
+            </label>
+          </div>
         </div>
         <div class="row center">
-          <a href="https://www.chacams.org/" id="download-button" class="btn-large waves-effect waves-light grey darken-4">CHAC Website</a>
+          <h5 class="header col s12 light">Dareton Age profile</h5>
+          <canvas id="pop-area"></canvas>
+          <div class="switch">
+            <label>
+              Indigenous
+              <input type="checkbox" onclick="popToggleData()">
+              <span class="lever"></span>
+              Non-Indigenous
+            </label>
+          </div>
         </div>
         <br><br>
       </div>
@@ -81,6 +99,7 @@
   <script src="js/materialize.min.js"></script>
   <script src="js/common.js"></script>
   <script src="js/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
   <script>
     var map;
     function initMap() {
@@ -89,6 +108,134 @@
         zoom: 13,
       });
     }
+
+
+    var randomScalingFactor = function() {
+      return Math.round(Math.random() * 100);
+    };
+
+    var daretonPieData = [143, 119, 95, 97];
+    var nationalPieData = [11224467, 11528252, 322171, 326996];
+
+    var configPie = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: daretonPieData,
+          backgroundColor: [
+            'rgba(109, 158, 235, 1)',
+            'rgba(164, 194, 244, 1)',
+            'rgba(224, 102, 102, 1)',
+            'rgba(234, 153, 153, 1)',
+          ],
+          label: 'Dareton'
+        }],
+        labels: [
+          'Non-indigenous (M)',
+          'Non-indigenous (F)',
+          'Indigenous (M)',
+          'Indigenous (F)',
+        ]
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    function pieToggleData() {
+      if(myPie.data.datasets[0].label == "Dareton") {
+        myPie.data.datasets[0].data = nationalPieData;
+        myPie.data.datasets[0].label = "Australia";
+      } else {
+        myPie.data.datasets[0].data = daretonPieData;
+        myPie.data.datasets[0].label = "Dareton";
+      }
+      myPie.update();
+    }
+
+    function clone(hash) {
+      var json = JSON.stringify(hash);
+      var object = JSON.parse(json);
+
+      return object;
+    }
+
+
+    var indigenousPopData = [{
+      type: 'horizontalBar',
+      label: 'Male (ATSI)',
+      backgroundColor: 'rgba(224, 102, 102, 1)',
+      data: [-10, -11, -34, -17, -15, -19],
+    }, {
+      type: 'horizontalBar',
+      label: 'Female (ATSI)',
+      backgroundColor: 'rgba(109, 158, 235, 1)',
+      data: [3, 17, 34, 19, 13, 3],
+    }];
+    var nIndigenousPopData = [{
+      type: 'horizontalBar',
+      label: 'Male (non-ATSI)',
+      backgroundColor: 'rgba(224, 102, 102, 1)',
+      data: [-48, -44, -23, -17, -8, -4],
+    }, {
+      type: 'horizontalBar',
+      label: 'Female (non-ATSI)',
+      backgroundColor: 'rgba(109, 158, 235, 1)',
+      data: [44, 40, 18, 6, 11, 4],
+    }];
+
+    var configPop = {
+        type: 'horizontalBar',
+        data: {
+          datasets: clone(indigenousPopData),
+          labels: [
+            '>65 yrs',
+            '45-64 yrs',
+            '25-44 yrs',
+            '15-24 yrs',
+            '5-14 yrs',
+            '0-4 yrs',
+          ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    stacked: true
+                }],
+                yAxes: [{
+                    stacked: true
+                }]
+            }
+        }
+    }
+
+    function popToggleData() {
+      var currDataset = myPop.data.datasets;
+      if(currDataset[0].label == "Male (ATSI)") {
+        // myPop.data.datasets = nIndigenousPopData;
+        var newDataset = nIndigenousPopData;
+      } else {
+        // myPop.data.datasets = indigenousPopData;
+        var newDataset = indigenousPopData;
+      }
+      // Does swap
+      for(var i = 0; i < currDataset.length; i++) {
+        myPop.data.datasets[i].data = newDataset[i].data;
+        myPop.data.datasets[i].label = newDataset[i].label;
+      }
+      myPop.update();
+    }
+
+
+
+    $(document).ready(function() {
+      var ctxPie = document.getElementById('pie-area').getContext('2d');
+      window.myPie = new Chart(ctxPie, configPie);
+
+      var ctxPop = document.getElementById('pop-area').getContext('2d');
+      window.myPop = new Chart(ctxPop, configPop);
+    });
+  
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1UQT5GWfKb0HcDGaZ21kAL-ksv89hd0g&callback=initMap"
   async defer></script>
