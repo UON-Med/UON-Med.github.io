@@ -1,0 +1,10 @@
+.canvas-container {
+    display: relative;
+    height: 50vmin;
+}
+
+@media only screen and (max-width: 600px) {
+    .canvas-container {
+        height: 100vmin;
+    }
+}

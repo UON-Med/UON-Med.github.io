@@ -12,7 +12,7 @@
   <link href="css/icons.css" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/common.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/dareton.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
   <!-- Nav bar -->
@@ -55,40 +55,50 @@
           <h5 class="header col s12 light">Location</h5>
           <div id="map" class="col s12" style="height: 500px;"></div>
         </div>
+
         <div class="row center">
-          <h5 class="header col s12 light">Ethnic/Gender profile</h5>
-          <canvas id="pie-area"></canvas>
-          <div class="switch">
-            <label>
-              Dareton
-              <input type="checkbox" onclick="pieToggleData()">
-              <span class="lever"></span>
-              Australia
-            </label>
+          <div class="col s12 m6">
+            <h5 class="header col s12 light">Ethnic/Gender profile</h5>
+            <div class="canvas-container">
+              <canvas id="pie-area"></canvas>
+            </div>
+            <div class="switch" style="margin-top: 75px;">
+              <label>
+                Dareton
+                <input type="checkbox" onclick="pieToggleData()">
+                <span class="lever"></span>
+                Australia
+              </label>
+            </div>
+            <br></br>
+          </div>
+
+          <div class="col s12 m6">
+            <h5 class="header col s12 light">Dareton Age profile</h5>
+            <div class="canvas-container">
+              <canvas id="pop-area"></canvas>
+            </div>
+            <div class="switch" style="margin-top: 75px;">
+              <label>
+                Indigenous
+                <input type="checkbox" onclick="popToggleData()">
+                <span class="lever"></span>
+                Non-Indigenous
+              </label>
+            </div>
+            <br></br>
           </div>
         </div>
-        <div class="row center">
-          <h5 class="header col s12 light">Dareton Age profile</h5>
-          <canvas id="pop-area"></canvas>
-          <div class="switch">
-            <label>
-              Indigenous
-              <input type="checkbox" onclick="popToggleData()">
-              <span class="lever"></span>
-              Non-Indigenous
-            </label>
-          </div>
-        </div>
-        <br><br>
+
       </div>
+      <br><br>
     </div>
+  </div>
 
       <!-- <div class="gallery-wrapper"> -->
         <!-- <img class="materialboxed" width="100%" src="images/bar-beach.jpg"> -->
       <!-- </div> -->
-    </div>  
-  </div>
-  <div id="tab3" data-tab="Tab 3" class="col s12">
+  <div id="tab3" data-tab="To do" class="col s12">
     
   </div>
 
@@ -98,7 +108,7 @@
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/common.js"></script>
-  <script src="js/index.js"></script>
+  <script src="js/dareton.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
   <script>
     var map;
@@ -138,7 +148,8 @@
         ]
       },
       options: {
-        responsive: true
+        maintainAspectRatio: false,
+        // responsive: true,
       }
     };
 
@@ -198,6 +209,8 @@
           ]
         },
         options: {
+            maintainAspectRatio: false,
+            // responsive: true,
             scales: {
                 xAxes: [{
                     stacked: true
