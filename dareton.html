@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Joint Medical Program</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="theme-color" content="#263238" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <link rel="manifest" href="manifest.json">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!-- CSS  -->
+  <link href="css/icons.css" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/common.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <!-- Nav bar -->
+  <div class="navbar-fixed" data-include="header"><nav class="nav-extended blue-grey darken-4" role="navigation"><div class="nav-wrapper container"></div><div class="nav-content container"><ul class="tabs tabs-transparent"></ul></div></div>
+
+  <!-- FAB -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large blue-grey waves-effect waves-light darken-4">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+  </div>
+
+  <div id="tab1" data-tab="Intro" class="col s12">
+    <!-- Banner content -->
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <br><br>
+        <h1 class="header center grey-text text-darken-4">Dareton Diabetes Camp</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A Coomealla Health Aboriginal Corporation (CHAC) initiative</h5>
+        </div>
+        <div class="row center">
+          <a href="https://www.chacams.org/" id="download-button" class="btn-large waves-effect waves-light grey darken-4">CHAC Website</a>
+        </div>
+        <br><br>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab2" data-tab="Community" class="col s12">
+    <div class="container">
+      <div class="gallery-wrapper">
+        <img class="materialboxed" width="100%" src="images/bar-beach.jpg">
+      </div>
+    </div>  
+  </div>
+  <div id="tab3" data-tab="Tab 3" class="col s12"></div>
+
+  <div data-include="footer"></div>
+
+  <!--  Scripts-->
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/index.js"></script>
+  </body>
+</html>
