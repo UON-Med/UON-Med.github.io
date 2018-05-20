@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const buildNumber = '0.2.3.9g'
+const buildNumber = '0.2.3.9h'
 
 var dataCacheName = 'JMPdata-v' + buildNumber;
 var cacheName = 'JMPpwa-v' + buildNumber;
