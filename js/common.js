@@ -1,10 +1,14 @@
-const buildDate = '3:45am, 21 May 2018';
+const buildDate = '2:33pm, 21 May 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
 var logoLeftMargin = 0;
 
-var position = $(window).scrollTop();
+function scrollTop() {
+  return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+}
+
+var position = scrollTop();
 
 function isMobile() {
   if($(window).width() < tooSmallForJMP) {
@@ -201,7 +205,7 @@ $(document).on("scroll", function() {
     $('.tabs').removeClass('collapsed-tabs');
   }
 
-  var scroll = $(window).scrollTop();
+  var scroll = scrollTop();
   if(scroll > position) {
     // Scrolling downwards
     collapseNav();
