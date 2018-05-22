@@ -10561,6 +10561,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleCarouselDrag",
       value: function _handleCarouselDrag(e) {
+        const threshold = 8;
         var x = void 0,
             y = void 0,
             delta = void 0,
@@ -10572,7 +10573,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           deltaY = Math.abs(this.referenceY - y);
           if (deltaY < 30 && !this.verticalDragged) {
             // If vertical scrolling don't allow dragging.
-            if (delta > 2 || delta < -2) {
+            if (delta > threshold || delta < -threshold) {
               this.dragged = true;
               this.reference = x;
               this._scroll(this.offset + delta);
