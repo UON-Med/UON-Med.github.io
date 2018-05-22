@@ -1,4 +1,4 @@
-const buildDate = '2:33pm, 21 May 2018';
+const buildDate = '10:27pm, 22 May 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -196,7 +196,22 @@ $(document).ready(function() {
   });
 });
 
-$(document).on("scroll", function() {
+
+
+
+var previousScroll = [0, 0];
+var correction = false;
+
+// Adjust the threshold to a larger number if you'd like it
+// to take longer to switch between horizontal and vertical
+// scrolling
+var threshold = 100;
+var direction;
+var directionTimeout;
+$(document).on("scroll", function(event) {
+  // ------------------
+  // Handles animations
+  // ------------------
   if(isAtTop()) {
     showAcronym();
     $('.tabs').addClass('collapsed-tabs');
@@ -214,7 +229,51 @@ $(document).on("scroll", function() {
     expandNav();
   }
   position = scroll;
+
+  // ----------------------------------
+  // Handles hori/vert scroll rejection
+  // ----------------------------------
+  if (!correction) {
+    var element = event.currentTarget,
+      $element = $(event.currentTarget),
+      x = element.scrollLeft,
+      y = element.scrollTop;
+
+    var diff = [
+      Math.abs(x - previousScroll[0]),
+      Math.abs(y - previousScroll[1])
+    ];
+
+    correction = true;
+
+    if (!direction) {
+      if (diff[0] > diff[1]) {
+        direction = 'horizontal';
+      } else if (diff[0] < diff[1]) {
+        direction = 'vertical';
+      } else {
+        direction = 'vertical';
+      }
+    }
+
+    if (direction === 'horizontal') {
+      $element.scrollTop(previousScroll[1]);
+      previousScroll = [x, previousScroll[1]];
+    } else {
+      $element.scrollLeft(previousScroll[0]);
+      previousScroll = [previousScroll[0], y];
+    }
+
+    clearTimeout(directionTimeout);
+    directionTimeout = setTimeout(function () {
+      direction = null;
+    }, threshold);
+  } else {
+    correction = false;
+  }
 });
+
+
 
 $(window).resize(function() {
   positionSeahorse();
