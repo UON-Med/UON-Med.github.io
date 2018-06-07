@@ -1,8 +1,9 @@
-const buildDate = '12:44pm, 07 Jun 2018';
+const buildDate = '2:12am, 08 Jun 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
 var logoLeftMargin = 0;
+var AnimationComplete = true;
 
 function scrollTop() {
   return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
@@ -27,16 +28,23 @@ function isAtTop() {
 }
 
 function collapseNav() {
-  $('.tabs').addClass('collapsed-tabs');
-  $('#nav-bar').addClass('collapsed-nav');
-  $('.tabs-content').addClass('collapsed-tabs-content');
+  if(!$('.tabs').hasClass('collapsed-tabs')) $('.tabs').addClass('collapsed-tabs');
+  if(!$('#nav-bar').hasClass('collapsed-nav')) {
+    $('#nav-bar').addClass('collapsed-nav');
+    AnimationComplete = false;
+    // console.log(AnimationComplete);
+  }
+  if(!$('.tabs-content').hasClass('collapsed-tabs-content')) $('.tabs-content').addClass('collapsed-tabs-content');
 }
 
 function expandNav() {
-  $('.tabs').removeClass('collapsed-tabs');
-  $('#nav-bar').removeClass('collapsed-nav');
-  $('.tabs-content').removeClass('collapsed-tabs-content');
-}
+  if($('.tabs').hasClass('collapsed-tabs')) $('.tabs').removeClass('collapsed-tabs');
+  if($('#nav-bar').hasClass('collapsed-nav')) {
+    $('#nav-bar').removeClass('collapsed-nav');
+    AnimationComplete = false;
+    // console.log(AnimationComplete);
+  }
+  if($('.tabs-content').hasClass('collapsed-tabs-content')) $('.tabs-content').removeClass('collapsed-tabs-content');}
 
 function calcLogoLeftMargin() {
   $('#logo-span').attr("style", "margin-left: 0px;");
@@ -144,7 +152,7 @@ $(document).ready(function() {
         $('.dropdown-trigger').dropdown();
         $('.modal').modal();
         $('select').formSelect();
-        $('.tooltipped').tooltip();
+        $('.tooltipped').tooltip({html: true});
 
         // Generates tabs
         var tabs = $('[data-tab]');
@@ -190,6 +198,15 @@ $(document).ready(function() {
         });
         positionSeahorse();
         setTabHeight();
+
+        // Sets up flag to check if animation still happening
+        $("#nav-bar").bind("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function() {
+            AnimationComplete= true;
+            // console.log(AnimationComplete);
+            return false; /*Cancel any bubbling*/
+        });
+
+
       } else if(this.dataset.include == "footer") {
       // For footer
       }
@@ -213,17 +230,19 @@ $(document).on("scroll", function(event) {
   }
 
   var scroll = scrollTop();
-  if(scroll > position) {
-    // Scrolling downwards
-    collapseNav();
-  } else {
-    // Scrolling upwards
-    expandNav();
+  if(AnimationComplete || isAtTop()) {
+    if(scroll > position) {
+      // Scrolling downwards
+      collapseNav();
+      // console.log(scroll + ',' + position);
+    } else if(scroll < position){
+      // Scrolling upwards
+      expandNav();
+      // console.log(scroll + ',' + position);
+    }
   }
   position = scroll;
 });
-
-
 
 $(window).resize(function() {
   positionSeahorse();

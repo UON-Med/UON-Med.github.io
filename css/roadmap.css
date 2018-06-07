@@ -1,0 +1,31 @@
+.carousel {
+    width: auto !important;
+}
+
+td {
+    -webkit-transition: background-color .25s ease;
+    transition: background-color .25s ease;
+}
+
+td:hover {
+    background-color: rgba(242, 242, 242, 0.5);
+}
+
+.tooltip-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#weeks {
+    z-index: 1000;
+    /*-webkit-transition: box-shadow .25s, -webkit-box-shadow .25s;*/
+    /*transition: box-shadow .25s, -webkit-box-shadow .25s;*/
+    /*-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);*/
+    /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);*/
+}

@@ -96,11 +96,15 @@ function createTable(tableData, year) {
   // -------------
   // Generates DOM
   // -------------
-  let result = ["<table class='highlight'>"];
+  let result = ["<table class=''>"];
   // for(let row of tableData) {
   for(let y = 0; y < tableData.length; y++) {
     var row = tableData[y];
     result.push("<tr>");
+
+    var el = 'td';
+    if(y == 0) el = 'th';
+
     // for(let cell of row) {
     for(let x = 0; x < row.length; x++) {
       var cell = row[x];
@@ -112,10 +116,11 @@ function createTable(tableData, year) {
       if(y == 0) {
         tooltipped = "";
       } else if(cell instanceof Array) {
+        // tooltipped = tooltipped.slice(0, -1) + ` <i class='material-icons center-align'>arrow_forwards</i> ${getDateString(Number(y)+cell[1], year)}"`
         tooltipped = tooltipped.slice(0, -1) + ` → ${getDateString(Number(y)+cell[1], year)}"`
       }
       if(cell instanceof Array) {
-        if(cell.lenfth == 0) {
+        if(cell.length == 0) {
           var content = '', height = 1, width = 1;          
         } else if(cell.length == 1) {
           var content = cell[0], height = 1, width = 1;
@@ -125,13 +130,21 @@ function createTable(tableData, year) {
           var content = cell[0], height = cell[1], width = cell[2];          
         }
 
-        result.push(`<td ` + tooltipped +
+        var style = '';
+        if(cell.length >= 4 && cell[3] == true) {
+          // content = '<div class="card" style="height:100%; width:100%; background-color:#abc; position:relative;">' + content + "</div>";
+          // style = ' style="padding:0;" ';
+
+          style = ' class="tooltipped event z-depth-1" style="" ';
+        }
+
+        result.push(`<${el} ` + style + tooltipped +
                         `rowspan=${height}
                          colspan=${width}>
                          ${content}
-                     </td>`);
+                     </${el}>`);
       } else {
-        result.push(`<td ` + tooltipped + `>${cell}</td>`);
+        result.push(`<${el} ` + tooltipped + `>${cell}</${el}>`);
       }
     }
     result.push("</tr>");
@@ -147,42 +160,38 @@ function initRoadmap() {
   // }
 
   // Sets up matrix
-  var cal_data = [];
+  var wk_data = [];
   for(var i = 0; i <= 52; i++) {
-    cal_data.push([]);
+    wk_data.push([]);
   }
 
   // Sets up 'Cal W' column
-  cal_data[0][0] = 'Cal W';
+  wk_data[0][0] = 'Cal W';
   for(var i = 1; i <= 52; i++) {
-    cal_data[i][0] = String(i);
+    wk_data[i][0] = String(i);
   }
 
   // Sets up 'Y1 W' column
-  cal_data[0][1] = 'Y1 W';
-  for(var i = 1, j = 1, space = 0; i <= 52; i++) {
+  wk_data[0][1] = 'Y1 W';
+  for(var i = 1, j = 1; i <= 52; i++) {
     if((i >= 9 && i <= 15) || 
        (i >= 17 && i <= 24) ||
        (i >= 29 && i <= 37) ||
        (i >= 39 && i <= 43) ) {
-      cal_data[i][1] = String(j);
+      wk_data[i][1] = String(j);
       j++;
-      space = 0;
-    } else {
-      space += 1;
-      // cal_data[i][1] = 's' + String(space);
-    }
-
-    if(i == 8 || i == 16 || i == 28 || i == 38 || i == 52) {
-      // cal_data[i - space + 1][1] = ['', space, 1];
-    }
+    } 
   }
 
+  var y1_data = [];
+  for(var i = 0; i <= 52; i++) {
+    y1_data.push([]);
+  }
   // Sets up 'Year 1' column
-  cal_data[0][2] = ['Year 1', 1, 2];
-  cal_data[6][2] = ['Second Round Offers', 1, 2];
-  cal_data[9][2] = ['Introduction to Medicine', 5, 1];
-  cal_data[14][2] = ['Circulation & Respiration', 10, 1];
+  y1_data[0][0] = ['Year 1', 1, 2];
+  y1_data[6][0] = ['Second Round Offers', 1, 2, true];
+  y1_data[9][0] = ['Introduction to Medicine', 5, 1, true];
+  y1_data[14][0] = ['Circulation & Respiration', 10, 1, true];
 
 
   // ---------
@@ -193,30 +202,34 @@ function initRoadmap() {
 
 
 
+  var wk_table = createTable(wk_data, 2018);
+  $('#weeks').append(wk_table); 
 
-  // console.log(cal_data);
+  var y1_table = createTable(y1_data, 2018);
+  $('#tab1').append(y1_table); 
 
-  // $('#roadmap').append('<thead></thead>');
-  // $('#roadmap').append('<tbody></tbody>');
+}
 
-  // var head = $('#roadmap').children()[0];
-  // var body = $('#roadmap').children()[1];
-
-  // for(var y = 0; y < cal_data.length; y++) {
-  //   head.append('<tr></tr>');
-  //   body.append('<tr></tr>');
-  //   var head_row = head.children()[y];
-  //   var body_row = body.children()[y];
-  //   for(var x = 0; x < cal_data[y].length; x++) {
-  //     head_row.append('<th>hey</th>');
-  //   }
+function resizeTable() {
+  // var wk_rows = $('#weeks').children().eq(0).children();
+  // var data_rows = $('#tab1').children().eq(0).children();
+  // // data_rows = $('#tab2').children()[0].children();
+  // // data_rows = $('#tab3').children()[0].children();
+  // // data_rows = $('#tab4').children()[0].children();
+  // // data_rows = $('#tab5').children()[0].children();
+  // for(var i = 0; i < data_rows.length; i++) {
+  //   data_rows[i].css('height', wk_rows[i].css('height'));
   // }
-  var table = createTable(cal_data, 2018);
-  $('#tab1').append(table); 
+
+  $("table:first tr").each(function(i) {
+    $("table:last tr").eq(i).height($(this).height());
+  });
+
 }
 
 $(document).ready(function(){
   $('.fixed-action-btn').floatingActionButton();
   $('.materialboxed').materialbox();
   initRoadmap();
+  resizeTable();
 });
