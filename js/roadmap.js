@@ -233,3 +233,8 @@ $(document).ready(function(){
   initRoadmap();
   resizeTable();
 });
+
+$(window).resize(function() {
+  resizeTable();
+});
+
