@@ -1,4 +1,4 @@
-const buildDate = '2:23am, 08 Jun 2018';
+const buildDate = '4:16am, 08 Jun 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -28,27 +28,27 @@ function isAtTop() {
 }
 
 function collapseNav() {
-  // if(!$('.tabs').hasClass('collapsed-tabs')) $('.tabs').addClass('collapsed-tabs');
-  // if(!$('#nav-bar').hasClass('collapsed-nav')) {
-  //   $('#nav-bar').addClass('collapsed-nav');
-  //   AnimationComplete = false;
-  // }
-  // if(!$('.tabs-content').hasClass('collapsed-tabs-content')) $('.tabs-content').addClass('collapsed-tabs-content');
-  $('.tabs').addClass('collapsed-tabs');
-  $('#nav-bar').addClass('collapsed-nav');
-  $('.tabs-content').addClass('collapsed-tabs-content');
+  if(!$('.tabs').hasClass('collapsed-tabs')) $('.tabs').addClass('collapsed-tabs');
+  if(!$('#nav-bar').hasClass('collapsed-nav')) {
+    $('#nav-bar').addClass('collapsed-nav');
+    AnimationComplete = false;
+  }
+  if(!$('.tabs-content').hasClass('collapsed-tabs-content')) $('.tabs-content').addClass('collapsed-tabs-content');
+  // $('.tabs').addClass('collapsed-tabs');
+  // $('#nav-bar').addClass('collapsed-nav');
+  // $('.tabs-content').addClass('collapsed-tabs-content');
 }
 
 function expandNav() {
-  // if($('.tabs').hasClass('collapsed-tabs')) $('.tabs').removeClass('collapsed-tabs');
-  // if($('#nav-bar').hasClass('collapsed-nav')) {
-  //   $('#nav-bar').removeClass('collapsed-nav');
-  //   AnimationComplete = false;
-  // }
-  // if($('.tabs-content').hasClass('collapsed-tabs-content')) $('.tabs-content').removeClass('collapsed-tabs-content');
-  $('.tabs').removeClass('collapsed-tabs');
-  $('#nav-bar').removeClass('collapsed-nav');
-  $('.tabs-content').removeClass('collapsed-tabs-content');
+  if($('.tabs').hasClass('collapsed-tabs')) $('.tabs').removeClass('collapsed-tabs');
+  if($('#nav-bar').hasClass('collapsed-nav')) {
+    $('#nav-bar').removeClass('collapsed-nav');
+    AnimationComplete = false;
+  }
+  if($('.tabs-content').hasClass('collapsed-tabs-content')) $('.tabs-content').removeClass('collapsed-tabs-content');
+  // $('.tabs').removeClass('collapsed-tabs');
+  // $('#nav-bar').removeClass('collapsed-nav');
+  // $('.tabs-content').removeClass('collapsed-tabs-content');
 }
 
 function calcLogoLeftMargin() {
@@ -235,17 +235,17 @@ $(document).on("scroll", function(event) {
   }
 
   var scroll = scrollTop();
-  // if(AnimationComplete || isAtTop()) {
-  if(scroll > position) {
-    // Scrolling downwards
-    collapseNav();
-    // console.log(scroll + ',' + position);
-  } else if(scroll < position){
-    // Scrolling upwards
-    expandNav();
-    // console.log(scroll + ',' + position);
+  if(AnimationComplete || isAtTop()) {
+    if(scroll > position) {
+      // Scrolling downwards
+      collapseNav();
+      // console.log(scroll + ',' + position);
+    } else if(scroll < position){
+      // Scrolling upwards
+      expandNav();
+      // console.log(scroll + ',' + position);
+    }
   }
-  // }
   position = scroll;
 });
 

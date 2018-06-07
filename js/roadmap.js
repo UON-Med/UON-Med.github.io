@@ -118,16 +118,17 @@ function createTable(tableData, year) {
       } else if(cell instanceof Array) {
         // tooltipped = tooltipped.slice(0, -1) + ` <i class='material-icons center-align'>arrow_forwards</i> ${getDateString(Number(y)+cell[1], year)}"`
         tooltipped = tooltipped.slice(0, -1) + ` → ${getDateString(Number(y)+cell[1], year)}"`
+        // tooltipped = tooltipped.slice(0, -1) + ` ▶ ${getDateString(Number(y)+cell[1], year)}"`
       }
       if(cell instanceof Array) {
         if(cell.length == 0) {
-          var content = '', height = 1, width = 1;          
+          var content = '<span>' + '' + '</span>', height = 1, width = 1;          
         } else if(cell.length == 1) {
-          var content = cell[0], height = 1, width = 1;
+          var content = '<span>' + cell[0] + '</span>', height = 1, width = 1;
         } else if(cell.length == 2) {
-          var content = cell[0], height = cell[1], width = 1;
+          var content = '<span>' + cell[0] + '</span>', height = cell[1], width = 1;
         } else {
-          var content = cell[0], height = cell[1], width = cell[2];          
+          var content = '<span>' + cell[0] + '</span>', height = cell[1], width = cell[2];          
         }
 
         var style = '';
@@ -136,6 +137,13 @@ function createTable(tableData, year) {
           // style = ' style="padding:0;" ';
 
           style = ' class="tooltipped event z-depth-1" style="" ';
+        }
+        if(cell.length >= 5 && cell[4]) {
+          style = ' class="tooltipped event z-depth-1 ' + cell[4] + ' " style="" ';
+        }
+
+        if(cell.length >= 5 && cell[4].includes('darken')) {
+          style = style.slice(0, -2) + 'color: rgba(255, 255, 255, 0.9)" ';
         }
 
         result.push(`<${el} ` + style + tooltipped +
@@ -189,9 +197,9 @@ function initRoadmap() {
   }
   // Sets up 'Year 1' column
   y1_data[0][0] = ['Year 1', 1, 2];
-  y1_data[6][0] = ['Second Round Offers', 1, 2, true];
-  y1_data[9][0] = ['Introduction to Medicine', 5, 1, true];
-  y1_data[14][0] = ['Circulation & Respiration', 10, 1, true];
+  y1_data[6][0] = ['Second Round Offers', 1, 2, true, "green darken-1"];
+  y1_data[9][0] = ['Introduction to Medicine', 5, 1, true, "deep-orange lighten-3"];
+  y1_data[14][0] = ['Circulation & Respiration', 10, 1, true, "teal lighten-4"];
 
 
   // ---------
@@ -237,4 +245,3 @@ $(document).ready(function(){
 $(window).resize(function() {
   resizeTable();
 });
-
