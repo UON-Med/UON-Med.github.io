@@ -1,4 +1,4 @@
-const buildDate = '2:57am, 03 Jun 2018';
+const buildDate = '12:44pm, 07 Jun 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -144,6 +144,7 @@ $(document).ready(function() {
         $('.dropdown-trigger').dropdown();
         $('.modal').modal();
         $('select').formSelect();
+        $('.tooltipped').tooltip();
 
         // Generates tabs
         var tabs = $('[data-tab]');
@@ -220,10 +221,6 @@ $(document).on("scroll", function(event) {
     expandNav();
   }
   position = scroll;
-
-  // ----------------------------------
-  // Handles hori/vert scroll rejection
-  // ----------------------------------
 });
 
 
