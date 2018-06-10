@@ -96,7 +96,7 @@ function createTable(tableData, year) {
   // -------------
   // Generates DOM
   // -------------
-  let result = ["<table class=''>"];
+  let result = ["<table class='calendar-table'>"];
   // for(let row of tableData) {
   for(let y = 0; y < tableData.length; y++) {
     var row = tableData[y];
@@ -161,12 +161,7 @@ function createTable(tableData, year) {
   return result.join('\n');
 }
 
-function initRoadmap() {
-  // var cal_headers = ["Cal W"];
-  // for(var i = 0; i < 52; ++i) {
-  //   cal_headers.push(String(i));
-  // }
-
+function getWeeks(year) {
   // Sets up matrix
   var wk_data = [];
   for(var i = 0; i <= 52; i++) {
@@ -179,27 +174,67 @@ function initRoadmap() {
     wk_data[i][0] = String(i);
   }
 
-  // Sets up 'Y1 W' column
-  wk_data[0][1] = 'Y1 W';
-  for(var i = 1, j = 1; i <= 52; i++) {
-    if((i >= 9 && i <= 15) || 
-       (i >= 17 && i <= 24) ||
-       (i >= 29 && i <= 37) ||
-       (i >= 39 && i <= 43) ) {
-      wk_data[i][1] = String(j);
-      j++;
-    } 
+  if(year == 1) {
+    // Sets up 'Y1 W' column
+    wk_data[0][1] = 'Y1 W';
+    for(var i = 1, j = 1; i <= 52; i++) {
+      if((i >= 9 && i <= 15) || 
+         (i >= 17 && i <= 24) ||
+         (i >= 29 && i <= 37) ||
+         (i >= 39 && i <= 43) ) {
+        wk_data[i][1] = String(j);
+        j++;
+      } 
+    }
+  } else if(year == 2) {
+    wk_data[0][1] = 'Y2 W';
+    for(var i = 0; i < 9; i++) {
+      wk_data[8+i][1] = String(1+i);
+    }
+    for(var i = 0; i < 7; i++) {
+      wk_data[18+i][1] = String(10+i);
+    }
+    for(var i = 0; i < 10; i++) {
+      wk_data[29+i][1] = String(17+i);
+    }
+    for(var i = 0; i < 5; i++) {
+      wk_data[40+i][1] = String(27+i);
+    }
+
   }
 
+  return wk_data;
+}
+
+function initRoadmap() {
+  // var cal_headers = ["Cal W"];
+  // for(var i = 0; i < 52; ++i) {
+  //   cal_headers.push(String(i));
+  // }
+
+  // Sets up side column
+  var wk_data = getWeeks(1);
+
+  // Sets up 'Year 1' column
   var y1_data = [];
   for(var i = 0; i <= 52; i++) {
     y1_data.push([]);
   }
-  // Sets up 'Year 1' column
   y1_data[0][0] = ['Year 1', 1, 2];
   y1_data[6][0] = ['Second Round Offers', 1, 2, true, "green darken-1"];
   y1_data[9][0] = ['Introduction to Medicine', 5, 1, true, "deep-orange lighten-3"];
   y1_data[14][0] = ['Circulation & Respiration', 10, 1, true, "teal lighten-4"];
+
+
+  // Sets up 'Year 2' column
+  var y2_data = [];
+  for(var i = 0; i <= 52; i++) {
+    y2_data.push([]);
+  }
+  y2_data[0][0] = ['Year 2', 1, 2];
+  y2_data[8][0] = ['Defence & Repair', 7, 1, true, "light-blue darken-1"];
+  y2_data[15][0] = ['Movement & Sensation', 9, 1, true, "blue-grey lighten-2"];
+  y2_data[29][0] = ['Reproduction & Growth', 6, 1, true, "cyan darken-2"];
 
 
   // ---------
@@ -216,6 +251,9 @@ function initRoadmap() {
   var y1_table = createTable(y1_data, 2018);
   $('#tab1').append(y1_table); 
 
+  var y2_table = createTable(y2_data, 2019);
+  $('#tab2').append(y2_table); 
+
 }
 
 function resizeTable() {
@@ -229,10 +267,29 @@ function resizeTable() {
   //   data_rows[i].css('height', wk_rows[i].css('height'));
   // }
 
-  $("table:first tr").each(function(i) {
-    $("table:last tr").eq(i).height($(this).height());
-  });
+  // // Generic version of algo
+  // $("table:first tr").each(function(i) {
+  //   $("table:last tr").eq(i).height($(this).height());
+  // });
 
+  // Resizes ALL tables based on first table
+  var tables = $(".calendar-table");
+  $("#weeks tr").each(function(i) {
+    var curr_tr = $(this);
+    var curr_i = i;
+    tables.each(function(i) {
+      $(this).find("tr").eq(curr_i).height(curr_tr.height());
+    });
+  });
+}
+
+function updateWeeks(year) {
+  // var to_rebuild = $(".calendar-table").get(0);
+
+  $('#weeks').empty();
+  var wk_table = createTable(getWeeks(year), 2018+(year-1));
+  $('#weeks').append(wk_table); 
+  $('.tooltipped').tooltip({html: true});
 }
 
 $(document).ready(function(){
@@ -244,4 +301,9 @@ $(document).ready(function(){
 
 $(window).resize(function() {
   resizeTable();
+});
+
+document.addEventListener("tab-changed", function(e) {
+  var curr_tab = Number(String(e.detail).split(' ')[1]);
+  updateWeeks(curr_tab);
 });

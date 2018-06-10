@@ -1,4 +1,4 @@
-const buildDate = '4:16am, 08 Jun 2018';
+const buildDate = '2:58am, 11 Jun 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -85,11 +85,16 @@ function centreSeahorse() {
 
 function setTabHeight() {
   var activeHeight = 0;
-  $('.carousel-item.active').children().each(function(){
+  $('.carousel-item.active').children().each(function() {
     activeHeight = activeHeight + $(this).outerHeight(true);
   });
   $('.tabs-content').attr("style", "height: " + activeHeight + "px;");
   $('.tabs-content').css({"margin-top":(18+$('ul.tabs').height())+"px"});
+
+  $('.carousel-item.active').each(function() {
+    var tabChangedEvent = new CustomEvent("tab-changed", { "detail": $(this).data("tab") });
+    document.dispatchEvent(tabChangedEvent);
+  });
 }
 
 function showAcronym() {
