@@ -1,4 +1,4 @@
-const buildDate = '2:58am, 11 Jun 2018';
+const buildDate = '3:38am, 11 Jun 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -137,6 +137,39 @@ function initTabs() {
 
 function aboutToast() {
   M.toast({html: 'Version: ' + buildDate, classes: isMobile() ? '' : 'rounded'});
+}
+
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
+function loadChangelog() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "https://api.github.com/repos/UON-Med/UON-Med.github.io/commits?per_page=5",false);
+  xhr.send();
+  var container = document.getElementById("changelog-container");
+  if(xhr.status == 200) {
+    container.innerHTML = syntaxHighlight(JSON.parse(xhr.responseText));
+  } else {
+    container.innerHTML = "Error, could not retrieve changelog.";
+  }
 }
 
 $(document).ready(function() {

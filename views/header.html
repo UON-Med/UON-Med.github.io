@@ -3,10 +3,11 @@
   <!-- Modal Trigger -->
   <li><a class="waves-effect modal-trigger" href="#login-modal">Login</a></li>
   <li><a class="waves-effect" href="#!">Settings</a></li>
+  <li><a class="waves-effect modal-trigger" href="#changelog-modal" onclick="loadChangelog();">Changelog</a></li>
   <li><a class="waves-effect" href="#!" onclick="aboutToast();">About</a></li>
 </ul>
 
-<!-- Modal Structure -->
+<!-- Login Modal Structure -->
 <div id="login-modal" class="modal bottom-sheet">
   <div class="modal-content">
     <h4>Login</h4>
@@ -52,6 +53,13 @@
   </div>
 </div>
 
+<!-- Changelog Modal Structure -->
+<div id="changelog-modal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <pre id="changelog-container">
+    </pre>
+  </div>
+</div>
 
 <!-- Mobile nav -->
 <ul id="nav-mobile" class="sidenav">
