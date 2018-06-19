@@ -1,0 +1,804 @@
+hr.thin {
+    margin: 5px 0 0 0;
+}
+
+hr.thin.equal {
+    margin: 5px 0;
+}
+
+#LibraryIndex aside.Column {
+    width: 17em;
+}
+
+#LibraryIndex .Sheet {
+    overflow: visible;
+}
+
+#LibraryIndex button.Sidemenu {
+    position: absolute;
+    top: 20px;
+    left: 6px;
+    z-index: 1;
+    font-size: 1.2em;
+}
+
+#LibraryIndex button.Sidemenu.active {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    opacity: 1;
+}
+
+/* fixes for amboss.css */
+#LibraryIndex {
+    line-height: normal;
+    margin: 100px auto 0;
+}
+
+#LibraryIndex #Main {
+    position: fixed;
+}
+
+#LibraryIndex #Main > nav {
+    margin: 2.65em auto 0;
+    padding-top: 0;
+    position: static;
+}
+
+#LibraryIndex #Main a {
+    font-size: 1.3em;
+}
+
+#LibraryIndex.Page > header.Main > nav a:hover, div.Page > header.Main > nav a.active {
+    color: #82cfef !important;
+}
+
+.tooltip .Tooltip, .modal-content .Tooltip,
+.smartip .Tooltip, .smartip-modal .Tooltip {
+    display: block;
+    position: static;
+    background: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: inherit;
+    margin: inherit;
+    padding: inherit;
+    overflow: inherit;
+    max-width: none;
+}
+
+.tooltip.large .tooltip-inner,
+.smartip.large .smartip-body {
+    max-width: 50em;
+}
+
+.tooltip .Tooltip.amboss-tooltip.transcluded,
+.modal-content .Tooltip.amboss-tooltip.transcluded,
+.smartip .Tooltip.amboss-tooltip.transcluded,
+.smartip-modal .Tooltip.amboss-tooltip.transcluded {
+    display: block;
+    visibility: visible;
+}
+
+#LibrarySidemenu {
+    float: none;
+}
+
+#LibrarySidemenu .View > button {
+    opacity: 1;
+    font: 13px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+
+#LibrarySidemenu ul {
+    margin: 0;
+    padding: 0;
+}
+
+#LibrarySidemenu label {
+    font-weight: normal;
+}
+
+#LibrarySidemenu p {
+    margin: 0;
+}
+
+#LibrarySidemenu .View .Content .Info,
+#LibrarySidemenu .View .Content .Info * {
+    box-sizing: content-box;
+}
+
+#LibraryContent #LearningCard {
+    background-color: inherit;
+    box-shadow: none;
+    padding: 0;
+}
+
+#LibraryContent menu {
+    margin: 0;
+    padding: 0;
+}
+
+#LearningCard menu > * {
+    margin: 0 0.3em 0 0;
+}
+
+#LearningCard menu .button-list {
+    float: left;
+}
+
+#LearningCard article:hover a.autolink.internal-link {
+    border-bottom: 3px double #e0e0e0;
+}
+
+#LibraryList * {
+    box-sizing: content-box;
+}
+
+#LearningCard article.LearningCard footer ul.References,
+#LearningCard article.LearningCard footer ul.FurtherReadings {
+    padding-top: 0;
+}
+
+.ng-cloak {
+    display: none !important;
+}
+
+#LibraryContent .Wait.active + .Content + #LearningCard {
+    display: none;
+}
+
+#Notifications {
+    display: block !important;
+}
+
+/* end fixes for amboss.css */
+
+#LibrarySidemenu {
+    padding-right: 2px;
+}
+
+#LibrarySidemenu ul {
+    list-style: none;
+}
+
+#LibrarySidemenu .View {
+    background-color: #ceced0;
+    margin-bottom: 2px;
+    white-space: nowrap;
+}
+
+#LibrarySidemenu .View > button {
+    background-color: #babbbd;
+    width: 100%;
+    padding: 0.4em 1em 0.3em 0.5em;
+    text-align: left;
+    text-transform: uppercase;
+    line-height: 1.6em;
+}
+
+.en_US #LibrarySidemenu .View.Auditor > button {
+    background: #CECED0;
+}
+
+.de_DE #LibrarySidemenu .View.Auditor > button {
+    background: url('/images/culture/de_DE/icons/dieter-hint.png') no-repeat right;
+}
+
+#LibrarySidemenu .View > .Content {
+    display: none;
+}
+
+#LibrarySidemenu .View.active > .Content {
+    display: block;
+}
+
+#LibrarySidemenu .View.amboss-library-tree-preclinic.active > button {
+    border-left: 3px solid #83d5d1;
+}
+
+#LibrarySidemenu .View.amboss-library-tree-clinic.active > button {
+    border-left: 3px solid #5096a9;
+}
+
+#LibrarySidemenu .View .Info {
+    font-size: 0.8em;
+    color: #666;
+    cursor: default;
+    padding: 0.5em;
+    white-space: normal;
+    overflow: hidden;
+}
+
+#LibrarySidemenu .View .Info p + p {
+    padding-top: 0.5em;
+}
+
+#LibrarySidemenu .View.Header {
+    margin-top: 0.7em;
+}
+
+#LibrarySidemenu .View.Header > button {
+    background-color: #939393;
+    font-weight: bold;
+}
+
+#LibraryListHead {
+    position: relative;
+}
+
+#LibraryListHead .switch-wrapper {
+    background-color: #82c9c4;
+    height: 28px;
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+
+#LibrarySidemenu .View.Search.Header {
+    margin-top: 0;
+}
+
+#LibrarySidemenu .Search .Content {
+    padding: 0.3em 0;
+}
+
+#LibrarySidemenu .Search .InputCombo,
+#LibrarySidemenu .Search .chosen-container {
+    margin: 0.3em;
+    width: 16.4em;
+}
+
+#LibrarySidemenu .Search .chosen-container a {
+    transition-duration: 0s;
+}
+
+#LibrarySidemenu .Search .why-mark {
+    color: black;
+    background-color: #ceced0;
+    margin-left: -2.2em;
+}
+
+#LibrarySidemenu .Schedule .Content {
+    position: relative;
+    background-color: inherit;
+}
+
+/*für nachfolgenden .Tab mit position: absolute */
+#LibrarySidemenu .Schedule label.Tab {
+    position: relative;
+    display: inline-block;
+    width: 8.05em;
+    padding-top: 0.6em;
+    padding-bottom: 0.4em;
+    color: #444; /*like chosen-color*/
+    background-color: #c5c5c7;
+    text-align: center;
+    overflow: visible;
+    border: 1px solid #888;
+    -moz-box-shadow: 0 0 0.1em #888;
+    -webkit-box-shadow: 0 0 0.1em #888;
+    box-shadow: 0 0 0.1em #888;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer;
+    z-index: 0;
+}
+
+#LibrarySidemenu .Schedule #schedule-new-learning-card,
+#LibrarySidemenu .Schedule #schedule-old-learning-card,
+#LibrarySidemenu .Schedule #schedule-new-exam,
+#LibrarySidemenu .Schedule #schedule-old-exam {
+    width: 11.5em;
+}
+
+#LibrarySidemenu .Schedule .select-row {
+    text-align: left;
+    padding-left: 2px;
+    /* TODO wirklich zulassen? die selects sehen dann komisch aus */
+    white-space: normal;
+}
+
+#LibrarySidemenu .Schedule .select-row > div {
+    display: inline-block;
+}
+
+#LibrarySidemenu .Schedule .prev,
+#LibrarySidemenu .Schedule .next {
+    background-color: #f6f7f9;
+    border: 0.1em solid #c6c7c9;
+    border-radius: 0.9em;
+    color: #6c6c6c;
+    cursor: pointer;
+    font-size: 1.2em;
+    height: 25px;
+    line-height: 22px;
+    text-align: center;
+    vertical-align: middle;
+    width: 1.6em;
+}
+
+#LibrarySidemenu .Schedule .prev {
+    padding-right: 1px;
+}
+
+#LibrarySidemenu .Schedule .next {
+    padding-left: 1px;
+}
+
+#LibrarySidemenu .Schedule label.Tab.active {
+    background-color: inherit;
+    z-index: 1;
+}
+
+.no-touch #LibrarySidemenu .Schedule label.Tab.active:hover {
+    text-decoration: underline;
+}
+
+#LibrarySidemenu .Schedule label.Tab.old {
+    margin: 0.5em 0.3em 0 0.3em;
+    color: #888;
+}
+
+#LibrarySidemenu .Schedule label.Tab.new {
+    margin: 0.5em 0.3em 0 0;
+}
+
+#LibrarySidemenu .Schedule label.Tab .Blocker {
+    position: absolute;
+    bottom: -0.25em;
+    width: 100%;
+    height: 0.5em;
+    background-color: inherit;
+}
+
+#LibrarySidemenu .Schedule div.Tab {
+    display: none;
+}
+
+#LibrarySidemenu .Schedule div.Tab.active {
+    display: block;
+    position: relative;
+    width: 16.4em;
+    margin: 0 0.3em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: inherit;
+    border: 1px solid #888;
+    -moz-box-shadow: 0 0 0.1em #888;
+    -webkit-box-shadow: 0 0 0.1em #888;
+    box-shadow: 0 0 0.1em #888;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#LibrarySidemenu .Schedule div.Tab select {
+    width: 15.6em;
+}
+
+#LibrarySidemenu .Schedule div.Tab select option {
+    font-size: 0.8em;
+}
+
+/* Chosen-Select umstylen: */
+#LibrarySidemenu .Search .chosen-container,
+#LibrarySidemenu .Schedule .chosen-container,
+#LibrarySidemenu .Schedule .chosen-container-single .chosen-single {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #f6f7f9;
+    border: 0.1em solid #c6c7c9;
+    -webkit-border-radius: 0.9em;
+    -moz-border-radius: 0.9em;
+    border-radius: 0.9em;
+}
+
+#LibrarySidemenu .Search .chosen-container {
+    padding: 0.1em 0.3em;
+}
+
+#LibrarySidemenu .Schedule .chosen-container {
+    margin: 0.3em 0;
+}
+
+#LibrarySidemenu .Search .chosen-choices,
+#LibrarySidemenu .Schedule .chosen-choices,
+#LibrarySidemenu .Schedule .chosen-container-single .chosen-single {
+    background-color: inherit;
+    background-image: none;
+    border: none;
+}
+
+#LibrarySidemenu .Search .chosen-container-active .chosen-choices,
+#LibrarySidemenu .Schedule .chosen-container-active .chosen-single,
+#LibrarySidemenu .Schedule .chosen-container-active .chosen-choices {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+}
+
+#LibrarySidemenu .Search .chosen-container-multi .chosen-choices .search-choice,
+#LibrarySidemenu .Schedule .chosen-container-multi .chosen-choices .search-choice {
+    margin: 1px 2px;
+}
+
+#LibrarySidemenu .Search .chosen-container-multi .chosen-choices .search-field .default,
+#LibrarySidemenu .Schedule .chosen-container-multi .chosen-choices .search-field .default {
+    height: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#LibrarySidemenu .Root li {
+    padding-left: 1em;
+}
+
+#LibrarySidemenu .Root .Line {
+    display: block;
+    padding-left: 1em;
+    margin-left: -1em;
+    cursor: pointer;
+}
+
+.no-touch #LibrarySidemenu .Root .Line:hover {
+    background-color: #d7d7d9;
+}
+
+#LibrarySidemenu .Root .Block {
+    display: inline-block;
+    white-space: normal;
+    max-width: 15.5em;
+}
+
+#LibrarySidemenu .Root li.open > .Structure {
+    display: block;
+}
+
+#LibrarySidemenu .Root li.selected > .Line {
+    background-color: #e5e6e8;
+}
+
+#LibrarySidemenu .Root li .Icon.Tools {
+    vertical-align: top;
+    margin-top: 2px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    opacity: 0.50;
+}
+
+#LibrarySidemenu .Root > li {
+    border-top: 2px solid #babbbd;
+}
+
+#LibrarySidemenu .Textbook .Root > li:first-child {
+    border-top: none;
+}
+
+#LibrarySidemenu .Root > li:last-child .Line {
+    padding-bottom: 2px;
+}
+
+#LibrarySidemenu .Root > li > .Structure > li {
+    border-top: 1px solid #c1c2c4;
+}
+
+#LibrarySidemenu .Root .Structure {
+    display: none;
+    margin-left: -1em;
+}
+
+#LibrarySidemenu .Root .Structure .Block {
+    color: #333;
+    max-width: 14.6em; /*eigentlich 14.5, siehe aber Autoimmunerkrankungen*/
+}
+
+#LibrarySidemenu .Root .Structure .Structure .Line {
+    padding-left: 1.5em;
+}
+
+#LibrarySidemenu .Root .Structure .Structure .Block {
+    color: #555;
+    max-width: 14em; /*13.7*/
+}
+
+/* fixes for icons in Meine Lernkarten */
+#LibrarySidemenu .Favorites .icon,
+#LibrarySidemenu .Favorites .icon:before,
+.no-touche #LibrarySidemenu .Favorites .icon:hover,
+#LibrarySidemenu .OtherOwnLists .icon,
+#LibrarySidemenu .OtherOwnLists .icon:before,
+.no-touche #LibrarySidemenu .OtherOwnLists .icon:hover { /* nur das symbol kein button */
+    opacity: 0.50;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    cursor: default;
+}
+
+#LibraryList menu {
+    height: 22px;
+}
+
+#LibraryList menu .Column {
+    border-top: 3px solid #f6f7f9;
+}
+
+#LibraryList menu .Booklet {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+    opacity: 0.25;
+}
+
+#LibraryList menu button {
+    padding: 0 0 0 15px;
+    color: #000;
+    vertical-align: bottom;
+}
+
+#LibraryList .Text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 5px;
+    color: #000;
+}
+
+#LibraryList menu .Text {
+    color: #000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+    opacity: 0.25;
+}
+
+#LibraryList div.Row {
+    background-color: #dddee0;
+    border-top: 2px solid #f6f7f9;
+}
+
+#LibraryList div.Row .Column {
+    vertical-align: middle;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.no-touch #LibraryList div.Row:hover .Column {
+    background-color: #e5e6e8;
+}
+
+#LibraryList .Row .Column.Number {
+    text-align: center;
+    color: #333;
+    font-size: 11px;
+}
+
+#LibraryList .Number.Top {
+    background-image: url("/images/top.png") !important;
+    background-color: #5ec5ed !important;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 0;
+}
+
+#LibraryList .Row.Folder .Column.Number {
+    background-color: #ceced0;
+}
+
+.no-touch #LibraryList a:hover {
+    text-decoration: underline;
+}
+
+#LibraryList a.responsive {
+    font-size: 11px;
+    vertical-align: top;
+}
+
+.no-touch #LibraryList a.responsive:hover {
+    text-decoration: none;
+}
+
+#LibraryList a .Play {
+    vertical-align: bottom;
+}
+
+#LibraryList .Counter {
+    white-space: nowrap;
+    background-color: #ceced0;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 11px;
+}
+
+#LibraryList .Document {
+    vertical-align: top;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    opacity: 0.50;
+}
+
+#LibraryList .Status {
+    vertical-align: middle;
+}
+
+#LibraryList .Status span {
+    height: 10px;
+    display: inline-block;
+}
+
+#LibraryList .Statusbar {
+    width: 53px;
+    height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#LibraryList .Case {
+    color: #f69c9f;
+    font-size: 1.8em;
+    font-family: Arial;
+    line-height: 0.5em;
+    vertical-align: -2px;
+}
+
+#LibraryList small.responsive {
+    font-size: 11px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+    opacity: 0.25;
+}
+
+#LibraryList .Rating .inactive {
+    color: #f2f3f6;
+}
+
+#LibraryList .Rating {
+    color: #bbb;
+    font-size: 1.8em;
+    font-family: Arial; /* IE verwendet sonst andere Schriftart als restliche Browser */
+    line-height: 0.5em;
+    letter-spacing: -0.1em;
+    vertical-align: middle;
+    cursor: default;
+}
+
+#LibraryList .Recommendation {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#LibraryList .Recommendation mark {
+    display: none;
+    font-weight: bold;
+    color: #555;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 22px;
+    z-index: 1;
+}
+
+.no-touch #LibraryList .Recommendation:hover mark {
+    display: block
+}
+
+#LibraryList .Recommendation .set,
+#LibraryList .Recommendation .unset {
+    width: 8px;
+    height: 1em;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+#LibraryList .Recommendation .set {
+    background-color: #82cfef;
+}
+
+#LibraryList .Recommendation .unset {
+    background-color: #fff;
+}
+
+#LibraryContent .Wait.active {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 50px auto 0;
+}
+
+.en_US #LibraryContent .Wait.active {
+    background: url('/images/culture/en_US/logo-animated-100-100.gif') no-repeat top right;
+}
+
+.de_DE #LibraryContent .Wait.active {
+    background: url('/images/culture/de_DE/logo-animated-100-100.gif') no-repeat top right;
+}
+
+/* für die eingebundene Lernkarte */
+#LibraryContent .Grid.centered {
+    min-width: 344px;
+    width: 98%;
+}
+
+#LibraryContent menu.Tools {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    text-align: right;
+}
+
+#LibraryContent menu.Tools .left {
+    margin-left: 1em;
+    float: left;
+}
+
+#LibraryContent .Frame {
+    margin-bottom: 0;
+}
+
+article .flashed {
+    -moz-transition: background-color 2000ms;
+    -webkit-transition: background-color 2000ms;
+    -o-transition: background-color 2000ms;
+    transition: background-color 2000ms;
+}
+
+#LibraryContent .search-description {
+    padding: 0.4em 0 0.4em 18px;
+    background-color: #eef5b3;
+}
+
+#LibraryContent #LibraryListHead .Dictionary > div {
+    padding-left: 5px;
+}
+
+#LibraryContent #LibraryListHead #Title {
+    background-color: #babbbd;
+    width: 100%;
+    line-height: 1.6em;
+    padding: 0.4em 1em 0.3em 0.5em;
+    text-align: left;
+    opacity: 1;
+    font: 13px "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#LibraryListHead #Title > span {
+    line-height: 1.6em;
+}
+
+#LibraryListHead #Title .outdated {
+    margin-left: 1.5em;
+    color: #f00;
+    text-transform: none;
+}
+
+#LibraryContent #SearchHelpBox {
+    background-color: #eee;
+    padding: 0.5em 1.6em;
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+#LibraryContent #SearchHelpBox .TypeExample {
+    background-color: #eee;
+}
+
+#LibraryContent #LibraryList .Alias {
+    font-size: 0.9em;
+    color: gray;
+}
+
+#LibraryContent #LibraryList a:hover > span.Alias {
+    text-decoration: none;
+}
+
+/* special styles auditor list only visible on unsupported browsers */
+#LibraryContent a.YoutubeLink:hover, a.YoutubeLink:active {
+    color: #2a6496;
+    text-decoration: underline;
+}
+
+#LibraryContent a.YoutubeLink {
+    color: #428bca;
+}
