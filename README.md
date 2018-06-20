@@ -6,6 +6,14 @@ Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://j
 
 ## Encryption
 
+Run `python encrypt.py <password> <options>` as a wrapper around staticrypt, it encrypts all source data and index.
+
+```
+Options:
+  -i, --index          Attach flag to only re-encrypt index.html. Else will also
+                       do all data-source recursively.
+```
+
 `https://robinmoisson.github.io/staticrypt/` is used.
 
 You can also use the npm package
