@@ -1,5 +1,23 @@
+var has_pressed_space = false;
+
 function loadSection(path) {
-    $("#includedContent").load(encodeURIComponent(path), function() {
+    var encoded_path = encodeURIComponent(path);
+
+    $("#includedContent").load(encoded_path, function() {
+        // Initially loads 
+        var passphrase = MyLib.passphrase;
+        var encryptedMsg = $("#includedContent").html();
+        var encryptedHMAC = encryptedMsg.substring(0, 64)
+        var encryptedHTML = encryptedMsg.substring(64);
+        var decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
+        if(decryptedHMAC !== encryptedHMAC) {
+            alert('Bad passphrase! Reload page to decrypt.');
+            return;
+        }
+
+        var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
+        document.getElementById("includedContent").innerHTML = plainHTML;
+
         // Sets up content dict
         var content = {};
         $('div.Frame.Content.collapse').each(function(i) {
@@ -31,12 +49,34 @@ function loadSection(path) {
         $('[miamed-smartip]').tooltip({html: true}).each(function () {
             $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
         });
+
+        // Adds expand/contract shortcut
+        window.onkeydown = function(e) {
+            if (e.keyCode == 32 && e.target == document.body) {
+                e.preventDefault();
+                // user has pressed space
+                $('header.Frame.sticky-element').each(function(i) {
+                    var section_id = $(this).attr('ng-click').replace("NGLearningCardCollapse.toggle('","").replace("')","");
+                    if(has_pressed_space) {
+                        // Is open right now, need to toggle it closed
+                        $('#' + section_id).removeClass('opened');
+                        $(content[section_id]).removeClass('in');
+                        $(content[section_id]).css('height','0');
+                    } else {
+                        // Is closed right now, need to toggle open
+                        $('#' + section_id).addClass('opened');
+                        $(content[section_id]).addClass('in');
+                        $(content[section_id]).removeAttr('style');
+                    }
+                });
+                has_pressed_space = !has_pressed_space;
+            }
+        };
     });
 }
 
 $(document).ready(function(){
     anchor = window.location.hash.slice(1).replace(/%20/g, " ");
-    console.log(anchor)
 
     $("#menu-nav").load(encodeURIComponent("/nav.html"), function() {
         $('.menu-nav-toggle').click(function(e) {
