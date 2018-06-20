@@ -19,7 +19,7 @@ body {
   content: "";
   width: 20px;
   height: 20px;
-  background: url('/images/icon_tools_v370.png') no-repeat;
+  background: url('../images/icon_tools_v370.png') no-repeat;
   cursor: pointer;
 
   float: left;
@@ -199,7 +199,7 @@ a.icon {
 
     cursor: pointer;
 
-    background: url("/images/background_case4.gif") repeat scroll 0 0 #CCCCCC;
+    background: url("../images/background_case4.gif") repeat scroll 0 0 #CCCCCC;
 
     border-bottom-left-radius: 1.35em;
     border-top-left-radius: 1.35em;
@@ -614,7 +614,7 @@ aside.right, .aside.right {
 }
 
 .scoreout {
-  background: url("/images/pen_line.png") repeat scroll center top transparent;
+  background: url("../images/pen_line.png") repeat scroll center top transparent;
 }
 
 /*
@@ -942,7 +942,7 @@ body, h1, h2, h3, h4, h5, h6 {
     margin-left: -4px;
     padding: 19px 26px 19px 25px;
 
-    background: url("/images/background_case4.gif") repeat scroll 0 0 #CCCCCC;
+    background: url("../images/background_case4.gif") repeat scroll 0 0 #CCCCCC;
     box-shadow: 0 0 0.6em #888888;
   }
 
@@ -1072,7 +1072,7 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 
   #question-hint-wrapper + ul li .icon.bubble.active:after {
-    content: url("/images/hint_arrow.gif");
+    content: url("../images/hint_arrow.gif");
     position: absolute;
     top: -27px;
     left: 6px;
@@ -1099,7 +1099,7 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 
   #outdated {
-    background: url("/images/background_question_old.png") repeat scroll left top transparent;
+    background: url("../images/background_question_old.png") repeat scroll left top transparent;
     padding: 0.7em 0;
     text-align: center;
     font-weight: bold;
@@ -1219,14 +1219,14 @@ body, h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: -9px;
     top: -2px;
-    content: url("/images/pen_cross.png");
+    content: url("../images/pen_cross.png");
   }
 
   #question-answers .left p.letter.circle-full:after {
     position: absolute;
     left: -7px;
     top: -2px;
-    content: url("/images/pen_circle-full.png");
+    content: url("../images/pen_circle-full.png");
     opacity: 0.7;
   }
 
@@ -1234,7 +1234,7 @@ body, h1, h2, h3, h4, h5, h6 {
     position: absolute;
     left: -7px;
     top: -2px;
-    content: url("/images/pen_circle-empty.png");
+    content: url("../images/pen_circle-empty.png");
     opacity: 0.5;
   }
 
@@ -1247,7 +1247,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
   /* Default Hammer Icon */
   .icon.hammer {
-    background-image: url('/images/hammer.png');
+    background-image: url('../images/hammer.png');
     background-size: 16px 16px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -1272,7 +1272,7 @@ body, h1, h2, h3, h4, h5, h6 {
   /* Hard-Red Hammer Icon */
 
   .icon.hammer.hard {
-    background-image: url('/images/hammer-red.png');
+    background-image: url('../images/hammer-red.png');
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
     opacity: 1;
   }
@@ -1295,7 +1295,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
   /* No Hammerindex */
   .icon.hammer.deactivated {
-    background-image: url('/images/hammer-deactivated.png');
+    background-image: url('../images/hammer-deactivated.png');
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
     opacity: 1;
   }
@@ -1395,7 +1395,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
   .dashboard button {
     cursor: pointer;
-    background: url("/images/walk_pause.png") no-repeat scroll right top transparent;
+    background: url("../images/walk_pause.png") no-repeat scroll right top transparent;
     height: 90px;
     width: 90px;
     font-size: 0;
@@ -1403,7 +1403,7 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 
   .dashboard button:hover {
-    background-image: url("/images/walk_play.png");
+    background-image: url("../images/walk_play.png");
   }
 
   /* Alert */
@@ -1414,7 +1414,7 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 
   .alert:after {
-    content: url("/images/hint_arrow.gif");
+    content: url("../images/hint_arrow.gif");
     position: absolute;
     bottom: -11px;
     left: 6px;
@@ -1661,7 +1661,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
   .colorbox.checkbox.checked,
   .colorbox.checkbox.checked:hover {
-    background-image: url("/images/checkbox_color.png");
+    background-image: url("../images/checkbox_color.png");
     background-position: 12px 1px;
   }
 
@@ -1804,16 +1804,16 @@ body, h1, h2, h3, h4, h5, h6 {
     margin: 0;
   }
   article ul {
-    list-style: disc outside url("/images/icon_bullet_1.gif");
+    list-style: disc outside url("../images/icon_bullet_1.gif");
   }
   article ul ul {
-    list-style: disc outside url("/images/icon_bullet_2.gif");
+    list-style: disc outside url("../images/icon_bullet_2.gif");
   }
   article ul ul ul {
-    list-style: disc outside url("/images/icon_bullet_3.gif");
+    list-style: disc outside url("../images/icon_bullet_3.gif");
   }
   article ul ul ul ul {
-    list-style: disc outside url("/images/icon_bullet_4.gif");
+    list-style: disc outside url("../images/icon_bullet_4.gif");
   }
 
   article dl {
@@ -1885,20 +1885,20 @@ body, h1, h2, h3, h4, h5, h6 {
     padding: 0.5em 0.5em 0.5em 3em;
   }
   article span.merke {
-    background-image: url("/images/icon_merke.png");
+    background-image: url("../images/icon_merke.png");
   }
   article span.cave {
-    background-image: url("/images/icon_cave.png");
+    background-image: url("../images/icon_cave.png");
   }
   article span.merkspruch {
-    background-image: url('/images/icon_merkspruch.png');
+    background-image: url('../images/icon_merkspruch.png');
     background-position: 1.5em center;
   }
   article span.dgim-positive {
-    background-image: url("/images/dgim_positive-temp.png");
+    background-image: url("../images/dgim_positive-temp.png");
   }
   article span.dgim-negative {
-    background-image: url("/images/dgim_negative-temp.png");
+    background-image: url("../images/dgim_negative-temp.png");
   }
   article span.dgim-positive, article span.dgim-negative {
     background-size: auto 45px;     /* DRAG-1369 FIXME */
@@ -1906,7 +1906,7 @@ body, h1, h2, h3, h4, h5, h6 {
   }
 
   article span.case_link {
-    background-image: url('/images/icon_fall_stethoskop.png');
+    background-image: url('../images/icon_fall_stethoskop.png');
     background-position-x: 6.5px; /*0.5em;*/
     padding-left: 55px;
     padding-right: 55px; /* also right padding to keep text centered */
@@ -1998,7 +1998,7 @@ body, h1, h2, h3, h4, h5, h6 {
   .erklaerung-backdrop span {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
     opacity: 0.25;
-    background: url("/images/icon_tools_v330.png") repeat scroll -63px -3px transparent;
+    background: url("../images/icon_tools_v330.png") repeat scroll -63px -3px transparent;
     display: inline-block;
     height: 20px;
     vertical-align: middle;
@@ -2017,7 +2017,7 @@ body, h1, h2, h3, h4, h5, h6 {
     vertical-align: top;
   }
   article span.veraltet {
-    background: url("/images/veraltert_img.jpg") repeat scroll 0 0 transparent;
+    background: url("../images/veraltert_img.jpg") repeat scroll 0 0 transparent;
   }
 
   article .doctor { display: none; }
@@ -2193,32 +2193,32 @@ body, h1, h2, h3, h4, h5, h6 {
 
 
   article.LearningCard .patient-information:before {
-    content: url('/images/thumbnail-patient-information-white.png');
+    content: url('../images/thumbnail-patient-information-white.png');
   }
 
   article.LearningCard .three-d:before {
-    content: url('/images/three-d.png');
+    content: url('../images/three-d.png');
   }
 
   article.LearningCard .smartzoom:before {
-    content: url('/images/mikroskop2.png');
+    content: url('../images/mikroskop2.png');
   }
 
   article.LearningCard .meditricks:before {
-    content: url('/images/meditricks.png');
+    content: url('../images/meditricks.png');
   }
 
   article.LearningCard .calculator:before {
-    content: url('/images/thumbnail-calculator.png');
+    content: url('../images/thumbnail-calculator.png');
   }
 
   article.LearningCard .webContent:before {
-    content: url('/images/thumbnail-webcontent.png');
+    content: url('../images/thumbnail-webcontent.png');
   }
 
   article.LearningCard .svgimage:before {
     background: none;
-    content: url('/images/svg_viewer_icon.png');
+    content: url('../images/svg_viewer_icon.png');
   }
 
   article.LearningCard footer {
@@ -2316,7 +2316,7 @@ article.Search div.Number {
 }
 
 article.Search div.Number.Top {
-  background-image: url("/images/top.png") !important;
+  background-image: url("../images/top.png") !important;
   min-height: 28px;
   background-repeat: no-repeat;
   background-position: center center;
@@ -2404,7 +2404,7 @@ body .tooltip-modal .modal-content {
 .hammer-tooltip ul {
   padding-left: 12px;
   margin: 0;
-  list-style: disc outside url("/images/icon_bullet_1.gif");
+  list-style: disc outside url("../images/icon_bullet_1.gif");
   font-size: .9em;
   color: #999;
 }
@@ -2728,7 +2728,7 @@ Inactive -> inactive button (light gray button)
   }
 
   .amboss-text--blur #question-box .icon {
-    filter: url(/images/blur.svg#blur);
+    filter: url(../images/blur.svg#blur);
     -webkit-filter: blur(3px);
     filter: blur(3px);
   }
