@@ -1,5 +1,5 @@
-$(document).ready(function(){
-    $("#includedContent").load(encodeURIComponent("/content/Clinical Knowledge/0 Internal Medicine/0 Cardiology and Angiology/0 Diagnostics/0 Cardiovascular examination.html"), function() {
+function loadSection(path) {
+    $("#includedContent").load(encodeURIComponent(path), function() {
         // Sets up content dict
         var content = {};
         $('div.Frame.Content.collapse').each(function(i) {
@@ -32,4 +32,25 @@ $(document).ready(function(){
             $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
         });
     });
+}
+
+$(document).ready(function(){
+    anchor = window.location.hash.slice(1).replace(/%20/g, " ");
+    console.log(anchor)
+
+    $("#menu-nav").load(encodeURIComponent("/nav.html"), function() {
+        $('.menu-nav-toggle').click(function(e) {
+            e.stopPropagation();
+            $(this).parent().children().slice(1).slideToggle();
+        });
+        $('.menu-nav-leaf').click(function(e) {
+            loadSection($(this).attr('data-endpoint'))
+        });
+    });
+
+    if(anchor != '' && anchor != '/') {
+        loadSection(anchor)
+    } else {
+        loadSection("/content/Clinical Knowledge/0 Internal Medicine/0 Cardiology and Angiology/0 Diagnostics/0 Cardiovascular examination.html")
+    }
 });
