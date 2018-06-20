@@ -4,6 +4,8 @@ function loadSection(path) {
     var encoded_path = encodeURIComponent(path);
 
     $("#includedContent").load(encoded_path, function() {
+        // Resets has_pressed
+        has_pressed_space = false;
         // Initially loads 
         var passphrase = MyLib.passphrase;
         var encryptedMsg = $("#includedContent").html();
