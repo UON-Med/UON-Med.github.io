@@ -19,14 +19,14 @@ if(len(sys.argv) != 3):
 
 pp = pprint.PrettyPrinter(indent=4)
 
-manual_blacklist = ['./content/Clinical Knowledge/5 Urology/7 Traumatic Injuries']
+manual_blacklist = ['./content-source/Clinical Knowledge/5 Urology/7 Traumatic Injuries']
 
 
 # Finds highest level 1 folder it's started
 highest = (-1, '')
-for dirpath, dirs, files in os.walk("./content/Clinical Knowledge"):
-    if(dirpath != "./content/Clinical Knowledge"):
-        curr_num = int(dirpath.split("./content/Clinical Knowledge/")[-1].split(' ')[0])
+for dirpath, dirs, files in os.walk("./content-source/Clinical Knowledge"):
+    if(dirpath != "./content-source/Clinical Knowledge"):
+        curr_num = int(dirpath.split("./content-source/Clinical Knowledge/")[-1].split(' ')[0])
         if(curr_num > highest[0]):
             highest = (curr_num, '/'.join(dirpath.split('/')[:4]))
 # if highest is still -1, then it hasn't started ANY level 1 folders
@@ -34,11 +34,11 @@ blacklist = None
 lv1_root = highest[1]
 if(highest[0] != -1):
     # Adds level 1 folders < lv1_root that it's done to blacklist
-    raw_blacklist = next(os.walk('./content/Clinical Knowledge'))[1]
+    raw_blacklist = next(os.walk('./content-source/Clinical Knowledge'))[1]
     blacklist = []
     for i, lv1 in enumerate(raw_blacklist):
         if(int(lv1.split(' ')[0]) < highest[0]):
-            blacklist.append("./content/Clinical Knowledge/" + lv1)
+            blacklist.append("./content-source/Clinical Knowledge/" + lv1)
 
     try:
         # Finds the highest level 2 folder it's started
@@ -241,12 +241,12 @@ if __name__ == "__main__":
     # Should now be on library page
     # # Scrapes clinical knowledge (CK)
     # driver.find_element_by_css_selector("div.View.libraryTree.libraryTreekh0mVf.amboss-library-tree-clinic.full").click();
-    # recursiveScrape('./content/Clinical Knowledge/', False)
+    # recursiveScrape('./content-source/Clinical Knowledge/', False)
 
 
     # # Scrapes clinical steps (CS)
     driver.find_element_by_css_selector("div.View.libraryTree.libraryTree4h03Vf.amboss-library-tree-unknown.full").click();
-    recursiveScrape('./content/Clinical Skills/', False)
+    recursiveScrape('./content-source/Clinical Skills/', False)
 
 
     # driver.close()
