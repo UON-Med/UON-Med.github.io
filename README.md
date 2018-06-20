@@ -4,6 +4,30 @@ You can use the [editor on GitHub](https://github.com/UON-Med/UON-Med.github.io/
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
+## Encryption
+
+`https://robinmoisson.github.io/staticrypt/` is used.
+
+You can also use the npm package
+
+```
+Usage: staticrypt <filename> <passphrase> [options]
+
+Options:
+  --help               Show help                                       [boolean]
+  --version            Show version number                             [boolean]
+  -e, --embed          Whether or not to embed crypto-js in the page (or use an
+                       external CDN)                   [boolean] [default: true]
+  -o, --output         File name / path for generated encrypted file
+                                                        [string] [default: null]
+  -t, --title          Title for output HTML page
+                                            [string] [default: "Protected Page"]
+  -i, --instructions   Special instructions to display to the user.
+                                                        [string] [default: null]
+  -f, --file-template  Path to custom HTML template with password prompt.
+                          [string] [default: "[...]/cli/password_template.html"]
+```
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
