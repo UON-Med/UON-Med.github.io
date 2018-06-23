@@ -70,20 +70,22 @@ def generate_tree(path, html=""):
         if(file == '.DS_Store'):
             continue
         rel = path + "/" + file
+        num = ''
         try:
             int(file.split(' ')[0])
         except:
             pass
         else:
+            num = ' '.join(file.split(' ')[0]) + ' '
             file = ' '.join(file.split(' ')[1:])
         if os.path.isdir(rel):
-            html += "<li><a href='#' class='menu-nav-toggle'>%s</a><ol id=%s class='menu-nav-child' style='display: none;''>" % (file, file.replace(" ", ""))
+            html += "<li><a class='menu-nav-toggle'>%s</a><ol id=%s class='menu-nav-child' style='display: none;''>" % (file, (num+file).replace(" ", ""))
             html += generate_tree(rel)
             html += "</ol></li>"
         else:
             if '.html' in file:
                 href = rel[1:]
-                html += "<li class='menu-nav-leaf' data-endpoint='%s'><a href='#%s'>%s</a></li>" % (href, href[1:], file.split('.html')[0])
+                html += "<li class='menu-nav-leaf' data-endpoint='%s'><a id='%s' href='#%s'>%s</a></li>" % (href, (num+file).replace(" ", ""), href[1:], file.split('.html')[0])
             else:
                 html += "<li>%s</li>" % (file)
     return html

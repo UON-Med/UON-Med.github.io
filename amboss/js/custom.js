@@ -1,11 +1,97 @@
-var has_pressed_space = false;
+// -----------
+// Global vars
+// -----------
+var expand_by_default = false;
+
+Array.prototype.clean = function(deleteValue) {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] == deleteValue) {
+      this.splice(i, 1);
+      i--;
+    }
+  }
+  return this;
+};
+
+function get_trail(path) {
+    path = path.split('/');
+    path.clean("");
+    path.clean("content");
+    path.forEach(function(el, idx, arr) {
+        path[idx] = el.replace(/\s/g, "");
+    });
+    return path;
+}
+
+function expand_menu(path) {
+    path = get_trail(path);
+    $(".menu-nav-leaf").each(function(i) {
+        $(this).children().removeClass("menu-nav-leaf-active");
+    })
+    path.forEach(function(el, idx, arr) {
+        if(idx === arr.length - 1) {
+            $("a[id='"+el+"']").toggleClass("menu-nav-leaf-active");
+        } else {
+            $('#' + el).slideDown();
+        }
+    });
+}
+
+function get_content() {
+    var content = {};
+    $('div.Frame.Content.collapse').each(function(i) {
+        var section_id = $(this).attr('collapse').replace("!NGLearningCardCollapse.isOpen('","").replace("')","");
+        content[section_id] = this;
+    });
+
+    return content;
+}
+
+function expand_section(content, section_id) {
+    $('#' + section_id).addClass('opened');
+    $(content[section_id]).addClass('in');
+    $(content[section_id]).removeAttr('style');
+}
+
+function collapse_section(content, section_id) {
+    $('#' + section_id).removeClass('opened');
+    $(content[section_id]).removeClass('in');
+    $(content[section_id]).css('height','0');
+}
+
+function toggle_sections(content, user_initiated=true) {
+    // user has pressed space
+    $('header.Frame.sticky-element').each(function(i) {
+        var section_id = $(this).attr('ng-click').replace("NGLearningCardCollapse.toggle('","").replace("')","");
+        if(user_initiated) {
+            var to_collapse = expand_by_default;
+        } else {
+            var to_collapse = false;
+        }
+
+        if(to_collapse) {
+            // Is open right now, need to toggle it closed
+            collapse_section(content, section_id);
+        } else {
+            // Is closed right now, need to toggle open
+            expand_section(content, section_id);
+        }
+    });
+
+    if(user_initiated) {
+        expand_by_default = !expand_by_default;
+    }
+}
 
 function loadSection(path) {
+    // Underlines and focuses nav on new section
+    expand_menu(path);
+
     var encoded_path = encodeURIComponent(path);
 
     $("#includedContent").load(encoded_path, function() {
-        // Resets has_pressed
-        has_pressed_space = false;
+        $("#includedContent").css("display", "none");
+
         // Initially loads 
         var passphrase = MyLib.passphrase;
         var encryptedMsg = $("#includedContent").html();
@@ -20,12 +106,15 @@ function loadSection(path) {
         var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
         document.getElementById("includedContent").innerHTML = plainHTML;
 
+        $("#includedContent").fadeIn();
+
+        // ---------------------------------------------
+        // All content should be loaded/decrypted by now
+        // ---------------------------------------------
+
+
         // Sets up content dict
-        var content = {};
-        $('div.Frame.Content.collapse').each(function(i) {
-            var section_id = $(this).attr('collapse').replace("!NGLearningCardCollapse.isOpen('","").replace("')","");
-            content[section_id] = this;
-        });
+        var content = get_content();
 
         $('header.Frame.sticky-element').click(function(){
             // Finds section selected
@@ -34,14 +123,10 @@ function loadSection(path) {
 
             if($('#' + section_id).hasClass('opened')) {
                 // Is open right now, need to toggle it closed
-                $('#' + section_id).removeClass('opened');
-                $(content[section_id]).removeClass('in');
-                $(content[section_id]).css('height','0');
+                collapse_section(content, section_id);
             } else {
                 // Is closed right now, need to toggle open
-                $('#' + section_id).addClass('opened');
-                $(content[section_id]).addClass('in');
-                $(content[section_id]).removeAttr('style');
+                expand_section(content, section_id);
             }
         });
 
@@ -52,26 +137,15 @@ function loadSection(path) {
             $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
         });
 
+        if(expand_by_default) {
+            toggle_sections(content, user_initiated=false);
+        }
+
         // Adds expand/contract shortcut
         window.onkeydown = function(e) {
             if (e.keyCode == 32 && e.target == document.body) {
                 e.preventDefault();
-                // user has pressed space
-                $('header.Frame.sticky-element').each(function(i) {
-                    var section_id = $(this).attr('ng-click').replace("NGLearningCardCollapse.toggle('","").replace("')","");
-                    if(has_pressed_space) {
-                        // Is open right now, need to toggle it closed
-                        $('#' + section_id).removeClass('opened');
-                        $(content[section_id]).removeClass('in');
-                        $(content[section_id]).css('height','0');
-                    } else {
-                        // Is closed right now, need to toggle open
-                        $('#' + section_id).addClass('opened');
-                        $(content[section_id]).addClass('in');
-                        $(content[section_id]).removeAttr('style');
-                    }
-                });
-                has_pressed_space = !has_pressed_space;
+                toggle_sections(content);
             }
         };
     });
@@ -80,7 +154,11 @@ function loadSection(path) {
 $(document).ready(function(){
     anchor = window.location.hash.slice(1).replace(/%20/g, " ");
 
+    // Loads nav
     $("#menu-nav").load(encodeURIComponent("/nav.html"), function() {
+        // Callback, all stuff involving nav MUST be done here to guarantee
+        // execution occurs AFTER load is done
+
         $('.menu-nav-toggle').click(function(e) {
             e.stopPropagation();
             $(this).parent().children().slice(1).slideToggle();
@@ -88,11 +166,13 @@ $(document).ready(function(){
         $('.menu-nav-leaf').click(function(e) {
             loadSection($(this).attr('data-endpoint'))
         });
+        expand_menu(anchor);
     });
 
+    // Loads content
     if(anchor != '' && anchor != '/') {
-        loadSection(anchor)
     } else {
-        loadSection("/content/Clinical Knowledge/0 Internal Medicine/0 Cardiology and Angiology/0 Diagnostics/0 Cardiovascular examination.html")
+        anchor = "/content/Clinical Knowledge/0 Internal Medicine/0 Cardiology and Angiology/0 Diagnostics/0 Cardiovascular examination.html";
     }
+    loadSection(anchor);
 });

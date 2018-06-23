@@ -25,6 +25,10 @@ if(len(sys.argv) == 2):
             # os.system('staticrypt "' + old_file + '" ' + str(sys.argv[1]) + ' -o "' + new_file + '" -f encrypt_template.html')
             subprocess.call(["staticrypt", old_file, str(sys.argv[1]), "-o", new_file, "-f", "encrypt_template.html"])
 
+    # Puts in missing folders
+    pathlib.Path("./content/Clinical Skills").mkdir(parents=True, exist_ok=True) 
+    pathlib.Path("./content/Clinical Knowledge/5 Urology/7 Traumatic Injuries").mkdir(parents=True, exist_ok=True) 
+
 if((len(sys.argv) == 2) or (len(sys.argv) == 3 and (sys.argv[2] == '--index' or sys.argv[2] == '-i'))):
     # Encrypts index
     # os.system('staticrypt index-source.html ' + str(sys.argv[1]) + ' -o index.html -f index_template.html')

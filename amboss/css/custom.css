@@ -20,9 +20,19 @@
     /*font-size: 25px;*/
 }
 
+.menu-nav-toggle {
+    cursor: pointer;
+}
+
 .menu-nav-leaf {
     color: #0033cc;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.menu-nav-leaf-active {
+    text-decoration: underline !important;
+    /*font-weight: normal !important;*/
 }
 
 .menu-nav-hidden {
