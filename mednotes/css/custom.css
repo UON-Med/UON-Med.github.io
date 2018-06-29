@@ -2,6 +2,10 @@
     overflow: visible !important;
 }
 
+.OutlineTitleArea {
+    opacity: 0;
+}
+
 #includedContent {
     padding-top: 20px;
     margin-left: 350px;
