@@ -1,6 +1,25 @@
+button {
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+
+}
+*:focus {
+    outline: 0 !important;
+}
+button:hover {
+    background-color: black;
+    color: white;
+}
+
 .slideout-open, .slideout-open body, .slideout-open .slideout-panel {
     overflow: visible !important;
 }
+
+body {
+    /*min-height: 100%;*/
+}
+
 
 .OutlineTitleArea {
     opacity: 0;
@@ -21,6 +40,25 @@
     margin: auto !important;
 }
 
+.toggle-button {
+    width: 34px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 34px;
+    margin-left: 4px;
+    margin-top: 15px;
+    border-width: 0px;
+}
+
+.toggle-button-txt {
+    font-size: 16;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 34px;       /* the same as your div height */
+}
+
 #menu-nav {
     padding: auto !important;
     transition: height ease 0.5s, margin-top ease 0.3s;
@@ -34,7 +72,7 @@
     top: 0;
     left: 0;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 27px;
     /*font-size: 25px;*/
 }
 
@@ -55,6 +93,10 @@
 
 .menu-nav-hidden {
     height: 0px;
+}
+
+.menu-nav-child {
+    margin-left: 15px;
 }
 
 .Content {
@@ -118,4 +160,19 @@ pre {
     /*background-color: white;*/
     /*border-radius: 20px;*/
 }
+
+.InkSelectionRect {
+    background-color: transparent !important;
+}
+
+::-webkit-scrollbar {
+    width: auto !important; 
+    height: auto !important; 
+}
+
+::-webkit-scrollbar-button:start:decrement, ::-webkit-scrollbar-button:end:decrement, ::-webkit-scrollbar-button:start:increment, ::-webkit-scrollbar-button:end:increment, ::-webkit-scrollbar-thumb {
+    border: solid 1px #bec1c4; 
+    background: white; 
+}
+
 

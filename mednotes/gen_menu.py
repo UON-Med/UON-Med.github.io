@@ -58,6 +58,12 @@ import json
 #     else:
 #         return 1
 
+wrapper_prefix = "<div id='OreoPageColumn' class='Resizer__resizable___3cXGT navPanePageColumn pageColumn__column___BiVzv column__column___lF07v' aria-label='Page List'> <div id='PageList' class='pageColumn__fullWidth___f1Bc3 column__itemList___2uf3c '> <div class='ms-SelectionZone'> <div class='ms-FocusZone pagesContainer' data-focuszone-id='FocusZone3'>"
+wrapper_suffix = "</div></div></div><span class='Resizer__resizer___1UnJ4'></span></div>"
+leaf_format = "<div class='pageNode menu-nav-leaf' data-endpoint='%s' id='%s' href='#%s'> <div class='insertionHint__insertionHint___FN2xl' style='overflow: hidden;'> <div class='insertionHint__insertionHintInner___258_S'> <div class='insertionHint__circleOuter___2Q6Al'> <div class='insertionHint__circleMiddle___1Kv3b'> <div class='insertionHint__circleInner___36PFZ'></div></div></div></div><div class='insertionHint__line___2WNeO'></div></div><div class='pageListItem mainItem__item___3C3H5' draggable='true'> <div class='navItem mainItem__navItem___6MqNm navItem__item___3XSQD pageItem mainItem__highContrastOutline___26BC9' aria-activedescendant='true' data-is-focusable='true' role='treeitem' aria-label='%s, Page. Selected. Press Ctrl + F6 to navigate to page contents.' data-tip='%s' tabindex='0' data-selection-index='0'> <div class='mainItem__backgroundSelected___21wxb' style='background-color: rgb(193, 0, 82);'></div><div class='mainItem__itemWrap___3tojD' style='margin-left: 0px;'> <div title='%s' class='undefined active mainItem__wrapper___2fpxM'> <content class='navItem__content___2Ol4W'>%s</content> </div></div></div></div><div class='insertionHint__insertionHint___FN2xl' style='overflow: hidden;'> <div class='insertionHint__insertionHintInner___258_S'> <div class='insertionHint__circleOuter___2Q6Al'> <div class='insertionHint__circleMiddle___1Kv3b'> <div class='insertionHint__circleInner___36PFZ'></div></div></div></div><div class='insertionHint__line___2WNeO'></div></div></div>"
+item_format = "<div class='menu-nav-section'><div class='pageNode menu-nav-toggle' id='%s'> <div class='insertionHint__insertionHint___FN2xl' style='overflow: hidden;'> <div class='insertionHint__insertionHintInner___258_S'> <div class='insertionHint__circleOuter___2Q6Al'> <div class='insertionHint__circleMiddle___1Kv3b'> <div class='insertionHint__circleInner___36PFZ'></div></div></div></div><div class='insertionHint__line___2WNeO'></div></div><div class='pageListItem mainItem__item___3C3H5' draggable='true'> <div class='navItem mainItem__navItem___6MqNm navItem__item___3XSQD pageItem mainItem__highContrastOutline___26BC9' aria-activedescendant='true' data-is-focusable='true' role='treeitem' aria-label='%s, Page. Selected. Press Ctrl + F6 to navigate to page contents.' data-tip='%s' tabindex='0' data-selection-index='0'> <div class='mainItem__backgroundSelected___21wxb' style='background-color: rgb(193, 0, 82);'></div><div class='mainItem__itemWrap___3tojD' style='margin-left: 0px;'> <div title='%s' class='undefined active mainItem__wrapper___2fpxM'> <content class='navItem__content___2Ol4W'>%s</content> </div></div></div></div><div class='insertionHint__insertionHint___FN2xl' style='overflow: hidden;'> <div class='insertionHint__insertionHintInner___258_S'> <div class='insertionHint__circleOuter___2Q6Al'> <div class='insertionHint__circleMiddle___1Kv3b'> <div class='insertionHint__circleInner___36PFZ'></div></div></div></div><div class='insertionHint__line___2WNeO'></div></div></div>"
+
+
 def custom_key(elem):
     try:
         elem = int(elem.split(' ')[0])
@@ -79,20 +85,31 @@ def generate_tree(path, html=""):
             num = ' '.join(file.split(' ')[0]) + ' '
             file = ' '.join(file.split(' ')[1:])
         if os.path.isdir(rel):
-            html += "<li><a class='menu-nav-toggle'>%s</a><ol id=%s class='menu-nav-child' style='display: none;''>" % (file, (num+file).replace(" ", ""))
+            # html += "<li><a class='menu-nav-toggle'>%s</a><ol id='%s' class='menu-nav-child' style='display: none;''>" % (file, (num+file).replace(" ", ""))
+            html += item_format % ((num+file).replace(" ", ""), file, file, file, file)
+            html += "<div id='%sChildren' class='menu-nav-child' style='display: none;'>" % ((num+file).replace(" ", ""))
             html += generate_tree(rel)
-            html += "</ol></li>"
+            html += "</div></div>"
+            # html += "</ol></li>"
         else:
             if '.html' in file:
                 href = rel[1:]
-                html += "<li class='menu-nav-leaf' data-endpoint='%s'><a id='%s' href='#%s'>%s</a></li>" % (href, (num+file).replace(" ", ""), href[1:], file.split('.html')[0])
+                # html += "<li class='menu-nav-leaf' data-endpoint='%s'><a id='%s' href='#%s'>%s</a></li>" % (href, (num+file).replace(" ", ""), href[1:], file.split('.html')[0])
+                name = file.split('.html')[0]
+                html += leaf_format % (href, (num+file).replace(" ", ""), href[1:], name, name, name, name)
+
             else:
-                html += "<li>%s</li>" % (file)
+                # html += "<li>%s</li>" % (file)
+                html += item_format % ((num+file).replace(" ", ""), name, name, name, name)
+
     return html
 
 if __name__ == "__main__":
-    html = '<ul>'
-    html += generate_tree('./content') + '</ul>'
+    # html = '<ul>'
+    html = wrapper_prefix
+    html += generate_tree('./content')
+    html += wrapper_suffix
+    # html += '</ul>'
 
     with open('nav.html', 'w') as fp:
         fp.write(html)
