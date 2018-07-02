@@ -2,6 +2,7 @@
 // Global vars
 // -----------
 var expand_by_default = false;
+var location_lookup = null;
 
 Array.prototype.clean = function(deleteValue) {
   for (var i = 0; i < this.length; i++) {
@@ -151,8 +152,15 @@ function loadSection(path) {
     });
 }
 
+
 $(document).ready(function(){
     anchor = window.location.hash.slice(1).replace(/%20/g, " ");
+    $.getJSON("location_lookup.json", function(json) {
+        // When loading finished
+        $('#search-input').attr("placeholder", "Search");
+        $('#search-input').prop('disabled', false);
+        location_lookup = json;
+    });
 
     // Loads nav
     $("#menu-nav").load(encodeURIComponent("/nav.html"), function() {
@@ -175,4 +183,90 @@ $(document).ready(function(){
         anchor = "/content/Clinical Knowledge/0 Internal Medicine/0 Cardiology and Angiology/0 Diagnostics/0 Cardiovascular examination.html";
     }
     loadSection(anchor);
+
+    var options = {
+        url: "search_data.json",
+        getValue: "w",
+        list: {
+            match: {
+                enabled: true,
+            },
+            // showAnimation: {
+            //     type: "slide", //normal|slide|fade
+            //     time: 200,
+            //     callback: function() {}
+            // },
+            // hideAnimation: {
+            //     type: "slide", //normal|slide|fade
+            //     time: 200,
+            //     callback: function() {}
+            // },
+
+            // Decide between: onSelectItemEvent, onChooseEvent
+            onChooseEvent: function() {
+                // Gets new results
+                var results = $("#search-input").getSelectedItemData().r;
+                // Sorts results by frequency
+                results.sort(function(a, b) {
+                    return b[0] - a[0];
+                });
+                // Empties old results
+                $("#search-results").empty();
+                // Displays new results
+                for(var i = 0; i < results.length; i++) {
+                    var location_path = "Loading...";
+                    var location = null;
+                    if(location_lookup != null) {
+                        location_path = location_lookup[results[i][1]];
+                        // location = location_path.split('/');
+                        // location = location[location.length-1];
+                        // location = location.substr(location.indexOf(" ") + 1).split('.')[0];
+                        location = location_path.split('.');
+                        // Gets rid of leading '.' and trailing '.html'
+                        location = location.slice(1, location.length-1);
+                        location = location.join('/');
+                        // Gets rid of leading '/content-source/Clinical Knowledge/'
+                        location = location.split('/');
+                        location = location.slice(3, location.length).map(function(e) { 
+                            e = e.split(' ');
+                            e = e.slice(1, e.length).join(' '); 
+                            return e;
+                        });
+                        location = location.join(' / ');
+                        // Adds a break before the last element of the paths
+                        location = ["<div class='search-results-path'>", location.slice(0, location.lastIndexOf(" / ")+2), "</div><div class='search-results-page'>", location.slice(location.lastIndexOf(" / ")+2)].join('')
+                        
+
+                        // Gets rid of leading './' in location_path
+                        location_path = location_path.slice(2, location_path.length);
+                        // Swaps "content-source" out for "content"
+                        location_path = location_path.replace("content-source", "content");
+                    }
+                    var new_result = "<div class='search-results-item' data-endpoint='/"+location_path+"''> ";
+                    new_result += "<a href='#"+location_path+"'>"+location+" <span class='badge'>"+results[i][0]+"</div></span></a>";
+                    new_result += "</div>";
+                    $("#search-results").append(new_result);
+                };
+                $('.search-results-item').click(function(e) {
+                    loadSection($(this).attr('data-endpoint'))
+                });
+                var totalHeight = 0;
+                $("#search-results").children().each(function(){
+                    totalHeight += $(this).outerHeight();
+                });
+                $("#search-results").height(totalHeight);
+            },
+            onSelectItemEvent: function() {
+                // if($("#search-input").val() == "") {
+                //     $("#search-results").empty();
+                // }
+            },
+        },
+        theme: "square",
+    };
+
+    $("#search-input").easyAutocomplete(options);
+    $('#search-collapse').on( "click", function() {
+        $("#search-results").height(0);
+    });
 });
