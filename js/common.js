@@ -1,9 +1,10 @@
-const buildDate = '7:57pm, 23 Jun 2018';
+const buildDate = '9:17pm, 04 Jul 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
 var logoLeftMargin = 0;
 var AnimationComplete = true;
+var instance_tabs = null;
 
 function scrollTop() {
   return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
@@ -121,18 +122,31 @@ function hideAcronym() {
 
 function generateTabs(tab, index, id) {
   var classes = 'waves-effect waves-light';
-  if(index == 0) {
-    classes += ' active';
-  }
+  var anchor = window.location.hash.slice(1).replace(/%20/g, " ")
+  // var initial_index = 0;
+  // if(index == initial_index) {
+  //   classes += ' active';
+  // }
   $('ul.tabs').append("<li class='tab'><a class='"+classes+"' href='#"+id+"'>" + tab.dataset.tab + "</a></li>");
 }
 
-function initTabs() {
+function initTabs(tabs_list) {
   var tabsElem = $('.tabs')
   // var tabsElem = $(document.getElementsByClassName("tabs"));
   var tabsOptions = {swipeable : true, onShow: setTabHeight}
   var init_tabs = M.Tabs.init(tabsElem, tabsOptions);
-  var instance_tabs = M.Tabs.getInstance(tabsElem);
+  instance_tabs = M.Tabs.getInstance(tabsElem);
+
+  var anchor = window.location.hash.slice(1).replace(/%20/g, " ");
+  if(anchor == '' || anchor == '/') {
+      anchor = $(".active").attr('href').replace('#','');
+      // window.location.hash = anchor;
+  }
+  for(var i = 0; i < tabs_list.length; i++) {
+    if(anchor == tabs_list[i].replace(' ','')) {
+      instance_tabs.select("tab" + (i+1).toString());
+    }
+  }
 }
 
 function aboutToast() {
@@ -198,12 +212,22 @@ $(document).ready(function() {
         $('.tooltipped').tooltip({html: true});
 
         // Generates tabs
+        var anchor = window.location.hash.slice(1).replace(/%20/g, " ");
         var tabs = $('[data-tab]');
+        var tabs_list = []
         jQuery.each(tabs, function(index, value) {
           generateTabs(this, index, $(value)[0].id);
+          tabs_list.push(this.dataset.tab);
         }).promise().done(function() {
           // Guarantees tabs are generated before initialised
-          initTabs();
+          initTabs(tabs_list);
+          // // Sets the initial tab
+          // jQuery.each($('li.tab'), function(index, value) {
+          //   $(this.children[0]).removeClass("active");
+          //   if(tabs_list[index].replace(' ', '') == anchor) {
+          //     $(this.children[0]).addClass("active");
+          //   }
+          // });
         });
         showAcronym();
 

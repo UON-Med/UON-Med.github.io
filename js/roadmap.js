@@ -1,3 +1,5 @@
+var prev_tab = null;
+
 function getDateOfISOWeek(w, y) {
     var simple = new Date(y, 0, 1 + (w - 1) * 7);
     var dow = simple.getDay();
@@ -47,6 +49,9 @@ function createTable(tableData, year) {
     if(tableData[0][x] instanceof Array && tableData[0][x].length > 2) {
       defaultWidth = tableData[0][x][2];
     }
+    var prevTopic = null;
+    var currTopic = null;
+    var prevLen = 0;
     for(var y = 0; y < tableData.length; y = y) {
       // Figures out how far down to move each step
       var toMove = 1;
@@ -81,18 +86,28 @@ function createTable(tableData, year) {
           tableData[y][x][2] < tableData[0][x][2])) {
         if(tableData[y][x] instanceof Array) {
           var wksToGen = tableData[y][x][1];
+          currTopic = tableData[y][x][0];
         } else {
           var wksToGen = 1;
         }
-        for(var i = 0; i < wksToGen; i++) {
-          tableData[y+i][x+1] = String(i + 1);
+        if(prevTopic == currTopic) {
+          for(var i = 0; i < wksToGen; i++) {
+            tableData[y+i][x+1] = String(prevLen + i + 1);
+          }
+         } else {
+          for(var i = 0; i < wksToGen; i++) {
+            tableData[y+i][x+1] = String(i + 1);
+          }
+          prevLen = wksToGen;
         }
+        prevTopic = currTopic;
       }
 
       y += toMove;
     }
   }
 
+  // console.log(tableData);
   // -------------
   // Generates DOM
   // -------------
@@ -122,13 +137,13 @@ function createTable(tableData, year) {
       }
       if(cell instanceof Array) {
         if(cell.length == 0) {
-          var content = '<span>' + '' + '</span>', height = 1, width = 1;          
+          var content = '<span class="event-label">' + '' + '</span>', height = 1, width = 1;          
         } else if(cell.length == 1) {
-          var content = '<span>' + cell[0] + '</span>', height = 1, width = 1;
+          var content = '<span class="event-label">' + cell[0] + '</span>', height = 1, width = 1;
         } else if(cell.length == 2) {
-          var content = '<span>' + cell[0] + '</span>', height = cell[1], width = 1;
+          var content = '<span class="event-label">' + cell[0] + '</span>', height = cell[1], width = 1;
         } else {
-          var content = '<span>' + cell[0] + '</span>', height = cell[1], width = cell[2];          
+          var content = '<span class="event-label">' + cell[0] + '</span>', height = cell[1], width = cell[2];          
         }
 
         var style = '';
@@ -139,7 +154,11 @@ function createTable(tableData, year) {
           style = ' class="tooltipped event z-depth-1" style="" ';
         }
         if(cell.length >= 5 && cell[4]) {
-          style = ' class="tooltipped event z-depth-1 ' + cell[4] + ' " style="" ';
+          if(cell[4][0] == "#") {
+            style = ' class="tooltipped event z-depth-1" style="background-color: '+cell[4]+';" ';            
+          } else {
+            style = ' class="tooltipped event z-depth-1 ' + cell[4] + ' " style="" ';
+          }
         }
 
         if(cell.length >= 5 && cell[4].includes('darken')) {
@@ -200,6 +219,17 @@ function getWeeks(year) {
     for(var i = 0; i < 5; i++) {
       wk_data[40+i][1] = String(27+i);
     }
+  } else if(year == 3) {
+    wk_data[0][1] = 'Y3 W';
+    for(var i = 0; i < 14; i++) {
+      wk_data[2+i][1] = String(1+i);
+    }
+    for(var i = 0; i < 12; i++) {
+      wk_data[19+i][1] = String(15+i);
+    }
+    for(var i = 0; i < 12; i++) {
+      wk_data[34+i][1] = String(27+i);
+    }
 
   }
 
@@ -216,25 +246,48 @@ function initRoadmap() {
   var wk_data = getWeeks(1);
 
   // Sets up 'Year 1' column
-  var y1_data = [];
+  var year_data = [];
+  year_data[0] = [];
   for(var i = 0; i <= 52; i++) {
-    y1_data.push([]);
+    year_data[0].push([]);
   }
-  y1_data[0][0] = ['Year 1', 1, 2];
-  y1_data[6][0] = ['Second Round Offers', 1, 2, true, "green darken-1"];
-  y1_data[9][0] = ['Introduction to Medicine', 5, 1, true, "deep-orange lighten-3"];
-  y1_data[14][0] = ['Circulation & Respiration', 10, 1, true, "teal lighten-4"];
-
+  year_data[0][0][0] = ['Year 1', 1, 2];
+  year_data[0][6][0] = ['Second Round Offers', 1, 2, true, "green darken-1"];
+  year_data[0][9][0] = ['Introduction to Medicine', 5, 1, true, "#FCD5B4"];
+  year_data[0][14][0] = ['Circulation & Respiration', 2, 1, true, "#E6B8B7"];
+  year_data[0][17][0] = ['Circulation & Respiration', 8, 1, true, "#E6B8B7"];
+  year_data[0][26][0] = ['Summative Assessment', 1, 2, true, "red darken-1"];
+  year_data[0][29][0] = ['Energy & Excretion', 9, 1, true, "#C4BD97"];
+  year_data[0][39][0] = ['Energy & Excretion', 5, 1, true, "#C4BD97"];
+  year_data[0][45][0] = ['Summative Assessment', 2, 2, true, "red darken-1"];
+  year_data[0][50][0] = ['Supplementary Period', 1, 2, true, "red darken-1"];
 
   // Sets up 'Year 2' column
-  var y2_data = [];
+  year_data[1] = [];
   for(var i = 0; i <= 52; i++) {
-    y2_data.push([]);
+    year_data[1].push([]);
   }
-  y2_data[0][0] = ['Year 2', 1, 2];
-  y2_data[8][0] = ['Defence & Repair', 7, 1, true, "light-blue darken-1"];
-  y2_data[15][0] = ['Movement & Sensation', 9, 1, true, "blue-grey lighten-2"];
-  y2_data[29][0] = ['Reproduction & Growth', 6, 1, true, "cyan darken-2"];
+  year_data[1][0][0] = ['Year 2', 1, 2];
+  year_data[1][8][0] = ['Defence & Repair', 7, 1, true, "#8EB4E2"];
+  year_data[1][15][0] = ['Movement & Sensation', 2, 1, true, "#D9D9D9"];
+  year_data[1][18][0] = ['Movement & Sensation', 7, 1, true, "#D9D9D9"];
+  year_data[1][26][0] = ['Summative Assessment', 1, 2, true, "red darken-1"];
+  year_data[1][29][0] = ['Reproduction & Growth', 6, 1, true, "#CCC0DA"];
+  year_data[1][35][0] = ['Emotion & Behaviour', 4, 1, true, "#FFFF9A"];
+  year_data[1][40][0] = ['Emotion & Behaviour', 2, 1, true, "#FFFF9A"];
+  year_data[1][42][0] = ['Consolidation', 3, 1, true, "#FCD5B4"];
+  year_data[1][46][0] = ['Summative Assessment', 2, 2, true, "red darken-1"];
+  year_data[1][50][0] = ['Supplementary Period', 1, 2, true, "red darken-1"];
+
+  // Sets up 'Year 3' column
+  year_data[2] = [];
+  for(var i = 0; i <= 52; i++) {
+    year_data[2].push([]);
+  }
+  year_data[2][0][0] = ['Year 3', 1, 6];
+  year_data[2][1][0] = ['Group A', 3, 2, true, "#FFFFFF"];
+  year_data[2][1][2] = ['Group B', 3, 2, true, "#FFFFFF"];
+  year_data[2][1][4] = ['Group C', 3, 2, true, "#FFFFFF"];
 
 
   // ---------
@@ -248,12 +301,14 @@ function initRoadmap() {
   var wk_table = createTable(wk_data, 2018);
   $('#weeks').append(wk_table); 
 
-  var y1_table = createTable(y1_data, 2018);
+  var y1_table = createTable(year_data[0], 2018);
   $('#tab1').append(y1_table); 
 
-  var y2_table = createTable(y2_data, 2019);
+  var y2_table = createTable(year_data[1], 2019);
   $('#tab2').append(y2_table); 
 
+  var y3_table = createTable(year_data[2], 2020);
+  $('#tab3').append(y3_table); 
 }
 
 function resizeTable() {
@@ -293,6 +348,13 @@ function updateWeeks(year) {
 }
 
 $(document).ready(function(){
+  prev_tab = window.location.hash.slice(1).replace(/%20/g, " ");
+  // anchor = window.location.hash.slice(1).replace(/%20/g, " ");
+  // if(anchor == '' || anchor == '/') {
+  //     anchor = "Year1";
+  //     window.location.hash = anchor;
+  // }
+  // instance_tabs.select(anchor);
   $('.fixed-action-btn').floatingActionButton();
   $('.materialboxed').materialbox();
   initRoadmap();
@@ -304,6 +366,15 @@ $(window).resize(function() {
 });
 
 document.addEventListener("tab-changed", function(e) {
-  var curr_tab = Number(String(e.detail).split(' ')[1]);
-  updateWeeks(curr_tab);
+  if(e.detail != null) {
+    var tab_name = String(e.detail);
+    var curr_tab = Number(tab_name.split(' ')[1]);
+    updateWeeks(curr_tab);
+    // console.log('prev_tab: ' + prev_tab);
+    // console.log('curr_tab: ' + tab_name.replace(/ /g,""));
+    if(prev_tab != tab_name.replace(/ /g,"")) {
+      // window.location.hash = tab_name.replace(/ /g,"");
+      prev_tab = tab_name.replace(/ /g,"");
+    }
+  }
 });
