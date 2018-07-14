@@ -20,6 +20,7 @@
   <!-- CSS  -->
   <link href="css/icons.css" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/easy-autocomplete.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/common.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/index.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
@@ -100,14 +101,46 @@
         </div>
 
       </div>
-      <br><br>
     </div>
   </div>
   <div id="tab2" data-tab="Calendar" class="col s12">
-    <div class="container">
-      Note this only works for L-13 at the moment, real system will be deployed for Sem 2
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+        <h1 class="header center grey-text text-darken-4">Calendar tool</h1>
+        <div class="row">
+          <p class="col s12 light">Find your personalised, self-updating calendar by entering your name below and clicking the link. Google Calendar will then ask you whether you want to add this calendar to your account - say yes!</p>
+          <p class="col s12 light">You'll only need to do this once as the calendar will update itself remotely as new classes are added, or changes are made.</p>
+        </div>
+      </div>
     </div>
-    <iframe id="calendar" src="https://calendar.google.com/calendar/embed?src=vqn2qri9gvlg09n6om6jrvdd7c%40group.calendar.google.com&ctz=Australia%2FSydney" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+    <div class="container">
+      <div class="row">
+        <div id="menu-search">
+          <!-- <input id="search-input" placeholder="Loading..." disabled></input> -->
+          <input id="search-input" placeholder="Enter your name"></input>
+          <div id="search-results"></div>
+        </div>
+      </div>
+
+      <div class="row" style="padding-bottom: 20px;">
+        <!-- <h2 class="header grey-text text-darken-4">Instructions</h2>
+        <p class="light">
+          Stuff
+        </p> -->
+        <div class="row">
+          <div class="col s12">
+            <div class="card red darken-1">
+              <div class="card-content white-text">
+                <span class="card-title"><i class="material-icons prefix valign">warning</i><span style="padding-left: 10px;">Caution</span></span>
+                <p>Re-adding your personal calendar may result in duplicate events. It should stay updated even when your PBL and Clin groups change, throughout the next 5 years.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <iframe id="calendar" src="https://calendar.google.com/calendar/embed?src=vqn2qri9gvlg09n6om6jrvdd7c%40group.calendar.google.com&ctz=Australia%2FSydney" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe> -->
   </div>
   <div id="tab3" data-tab="Roadmap" class="col s12">
     <div class="section no-pad-bot" id="index-banner">
@@ -132,6 +165,7 @@
   <!--  Scripts-->
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/materialize.js"></script>
+  <script src="js/jquery.easy-autocomplete.js"></script>
   <script src="js/common.js"></script>
   <script src="js/index.js"></script>
   </body>

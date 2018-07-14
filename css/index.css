@@ -1,0 +1,9 @@
+#search-input {
+    -webkit-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+}
+
+.material-icons{
+    display: inline-flex;
+    vertical-align: top;
+}

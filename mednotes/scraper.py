@@ -18,7 +18,7 @@ pp = pprint.PrettyPrinter(indent=4)
 
 chrome_options = Options()
 # chrome_options.add_argument("--headless")
-driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver"), chrome_options=chrome_options)
+driver = webdriver.Chrome(executable_path=os.path.abspath("../chromedriver"), chrome_options=chrome_options)
 
 global_previously_saved = None
 global_previous_list = None
