@@ -1,4 +1,4 @@
-function get_search_height() {
+function set_search_height() {
     var baseHeight = 0;
     $("#tab2").children().each(function(){
         baseHeight += $(this).outerHeight(true);
@@ -6,6 +6,14 @@ function get_search_height() {
     var searchHeight = $(".easy-autocomplete-container").height();
     var totalHeight = baseHeight;
     $('.tabs-content').height(totalHeight);
+}
+
+function set_results_height() {
+    var totalHeight = 0;
+    $("#search-results").children().each(function(){
+        totalHeight += $(this).outerHeight();
+    });
+    $("#search-results").height(totalHeight);
 }
 
 $(document).ready(function(){
@@ -49,15 +57,12 @@ $(document).ready(function(){
                 new_result += "<a href='https://calendar.google.com/calendar?cid="+link+"' target='_blank' class='waves-effect waves-light btn'>"+$("#search-input").val()+"</a>";
                 // <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
                 new_result += "</div>";
+                $("#search-results").height(0);
                 $("#search-results").append(new_result);
                 $('.search-results-item').click(function(e) {
                     // $(this).attr('data-endpoint')
                 });
-                var totalHeight = 0;
-                $("#search-results").children().each(function(){
-                    totalHeight += $(this).outerHeight();
-                });
-                $("#search-results").height(totalHeight);
+                set_results_height();
             },
             onSelectItemEvent: function() {
                 // if($("#search-input").val() == "") {
@@ -65,13 +70,17 @@ $(document).ready(function(){
                 // }
             },
             onShowListEvent: function() {
-                get_search_height();
+                set_search_height();
             },
             onLoadEvent: function() {
-                get_search_height();
+                set_search_height();
             },
             onHideListEvent: function() {
-                get_search_height();
+                if($("#search-input").val() == '') {
+                    $("#search-results").empty();
+                }
+                set_results_height();
+                set_search_height();
             },
         },
         theme: "square",
