@@ -54,7 +54,7 @@ $(document).ready(function(){
                 $("#search-results").empty();
                 // Displays new results
                 var new_result = "<div class='search-results-item' data-endpoint='/"+link+"'> ";
-                new_result += "<a href='https://calendar.google.com/calendar?cid="+link+"' target='_blank' class='waves-effect waves-light btn'>"+$("#search-input").val()+"</a>";
+                new_result += "<a href='https://calendar.google.com/calendar?cid="+link+"&action=TEMPLATE' target='_blank' class='waves-effect waves-light btn'>"+$("#search-input").val()+"</a>";
                 // <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>button</a>
                 new_result += "</div>";
                 $("#search-results").height(0);
