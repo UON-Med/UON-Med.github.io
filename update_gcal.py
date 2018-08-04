@@ -124,6 +124,9 @@ def scrape():
     cal_links = []
     for i, calendar in enumerate(calendars):
         name = calendar.get_attribute('innerHTML').split(' - ')[1]
+        # Skips the special "JMP - All" calendar
+        if name == 'All':
+            continue
         cal_id = calendar.find_element_by_xpath('../..').get_attribute('data-calendarid')
         # print(cal_id)
         cals_scraped[name] = cal_id

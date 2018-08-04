@@ -1,0 +1,692 @@
+Topic | Total, Confidence(lower = better)
+========================================
+Guess 1
+-------
+HSE | 4, 0.041666666666666664, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 4, 0.14833333333333337, 
+Genetics | 4, 0.055, 
+PBL | 4, 0.21, 
+Physiology | 4, 0.245, 
+Pharmacology | 4, 0.12666666666666665, 
+Microbiology/Immunology | 4, 0.09833333333333334, 
+Pathology | 4, 0.043333333333333335, 
+-------
+Estimated total: 40, Confidence: 0.9683333333333334
+
+Guess 2
+-------
+HSE | 5, 0.04166666666666665, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 5, 0.14375000000000007, 
+Genetics | 4, 0.055, 
+PBL | 4, 0.21, 
+Physiology | 4, 0.245, 
+Pharmacology | 5, 0.11666666666666663, 
+Microbiology/Immunology | 4, 0.09833333333333334, 
+Pathology | 4, 0.043333333333333335, 
+-------
+Estimated total: 43, Confidence: 0.95375
+
+Guess 3
+-------
+HSE | 5, 0.04166666666666665, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 6, 0.1391666666666667, 
+Genetics | 4, 0.055, 
+PBL | 6, 0.18999999999999997, 
+Physiology | 6, 0.22166666666666665, 
+Pharmacology | 5, 0.11666666666666663, 
+Microbiology/Immunology | 6, 0.08500000000000002, 
+Pathology | 4, 0.043333333333333335, 
+-------
+Estimated total: 50, Confidence: 0.8925
+
+Guess 4
+-------
+HSE | 5, 0.04166666666666665, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 7, 0.1345833333333334, 
+Genetics | 4, 0.055, 
+PBL | 6, 0.18999999999999997, 
+Physiology | 6, 0.22166666666666665, 
+Pharmacology | 5, 0.11666666666666663, 
+Microbiology/Immunology | 6, 0.08500000000000002, 
+Pathology | 7, 0.03416666666666668, 
+-------
+Estimated total: 54, Confidence: 0.8787499999999999
+
+Guess 5
+-------
+HSE | 5, 0.04166666666666665, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 8, 0.13000000000000006, 
+Genetics | 4, 0.055, 
+PBL | 6, 0.18999999999999997, 
+Physiology | 6, 0.22166666666666665, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 8, 0.07166666666666671, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 61, Confidence: 0.7999999999999999
+
+Guess 6
+-------
+HSE | 5, 0.04166666666666665, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 4, 0.055, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 69, Confidence: 0.6612500000000002
+
+Guess 7
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 10, 0.05416666666666664, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 80, Confidence: 0.6604166666666668
+
+Guess 8
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 10, 0.05416666666666664, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 80, Confidence: 0.6604166666666668
+
+Guess 9
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 10, 0.05416666666666664, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 80, Confidence: 0.6604166666666668
+
+Guess 10
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 10, 0.05416666666666664, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 80, Confidence: 0.6604166666666668
+
+Guess 11
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 10, 0.05416666666666664, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 80, Confidence: 0.6604166666666668
+
+Guess 12
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 10, 0.05416666666666664, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 8, 0.08666666666666663, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 80, Confidence: 0.6604166666666668
+
+Guess 13
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 16, 0.053333333333333344, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 94, Confidence: 0.6212500000000001
+
+Guess 14
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 16, 0.053333333333333344, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 9, 0.1658333333333334, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 94, Confidence: 0.6212500000000001
+
+Guess 15
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 16, 0.053333333333333344, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 103, Confidence: 0.6204166666666668
+
+Guess 16
+-------
+HSE | 10, 0.04166666666666663, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 16, 0.053333333333333344, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 103, Confidence: 0.6204166666666668
+
+Guess 17
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 16, 0.053333333333333344, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 113, Confidence: 0.6204166666666668
+
+Guess 18
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 16, 0.053333333333333344, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 113, Confidence: 0.6204166666666668
+
+Guess 19
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 22, 0.052499999999999956, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 119, Confidence: 0.6195833333333334
+
+Guess 20
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 22, 0.052499999999999956, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 119, Confidence: 0.6195833333333334
+
+Guess 21
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 9, 0.12541666666666673, 
+Genetics | 22, 0.052499999999999956, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 119, Confidence: 0.6195833333333334
+
+Guess 22
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 22, 0.052499999999999956, 
+PBL | 9, 0.13916666666666677, 
+Physiology | 18, 0.16500000000000012, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 135, Confidence: 0.5879166666666668
+
+Guess 23
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 22, 0.052499999999999956, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 160, Confidence: 0.55375
+
+Guess 24
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 22, 0.052499999999999956, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 160, Confidence: 0.55375
+
+Guess 25
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 28, 0.05166666666666667, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 166, Confidence: 0.5529166666666667
+
+Guess 26
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 28, 0.05166666666666667, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 166, Confidence: 0.5529166666666667
+
+Guess 27
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 28, 0.05166666666666667, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 166, Confidence: 0.5529166666666667
+
+Guess 28
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 28, 0.05166666666666667, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 166, Confidence: 0.5529166666666667
+
+Guess 29
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 28, 0.05166666666666667, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 16, 0.04833333333333326, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 166, Confidence: 0.5529166666666667
+
+Guess 30
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 28, 0.05166666666666667, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 183, Confidence: 0.5495833333333334
+
+Guess 31
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 34, 0.05083333333333336, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 189, Confidence: 0.5487500000000001
+
+Guess 32
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 34, 0.05083333333333336, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 189, Confidence: 0.5487500000000001
+
+Guess 33
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 34, 0.05083333333333336, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 189, Confidence: 0.5487500000000001
+
+Guess 34
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 34, 0.05083333333333336, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 189, Confidence: 0.5487500000000001
+
+Guess 35
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 34, 0.05083333333333336, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 189, Confidence: 0.5487500000000001
+
+Guess 36
+-------
+HSE | 20, 0.041666666666666595, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 34, 0.05083333333333336, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 189, Confidence: 0.5487500000000001
+
+Guess 37
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 40, 0.0499999999999999, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 215, Confidence: 0.5479166666666666
+
+Guess 38
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 40, 0.0499999999999999, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 215, Confidence: 0.5479166666666666
+
+Guess 39
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 40, 0.0499999999999999, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 215, Confidence: 0.5479166666666666
+
+Guess 40
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 40, 0.0499999999999999, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 215, Confidence: 0.5479166666666666
+
+Guess 41
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 40, 0.0499999999999999, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 215, Confidence: 0.5479166666666666
+
+Guess 42
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 40, 0.0499999999999999, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 215, Confidence: 0.5479166666666666
+
+Guess 43
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 46, 0.049166666666666727, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 221, Confidence: 0.5470833333333334
+
+Guess 44
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 46, 0.049166666666666727, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 221, Confidence: 0.5470833333333334
+
+Guess 45
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 46, 0.049166666666666727, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 221, Confidence: 0.5470833333333334
+
+Guess 46
+-------
+HSE | 40, 0.04166666666666652, 
+Professional Development and Practice | 4, 0.0, 
+Anatomy/Histology | 4, 0.0, 
+Biochemistry | 25, 0.09375000000000007, 
+Genetics | 46, 0.049166666666666727, 
+PBL | 26, 0.11500000000000006, 
+Physiology | 26, 0.1550000000000001, 
+Pharmacology | 33, 0.04499999999999993, 
+Microbiology/Immunology | 9, 0.04416666666666672, 
+Pathology | 8, 0.003333333333333336, 
+-------
+Estimated total: 221, Confidence: 0.5470833333333334
+
