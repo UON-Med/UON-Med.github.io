@@ -1,4 +1,4 @@
-const buildDate = '02:07am, 30 Sep 2018';
+const buildDate = '02:13am, 30 Sep 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -285,7 +285,9 @@ $(document).ready(function() {
                     }
                 },
                 success: function() {
-                    window.location.pathname = $("#custom-nav-input").val();
+                    var origin = window.location.hostname;
+                    if(origin == "localhost") origin = window.location.host;
+                    window.location.href = window.location.protocol + '//' + origin + '/' + $("#custom-nav-input").val();
                 }
             });
         });
