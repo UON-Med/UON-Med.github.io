@@ -158,6 +158,10 @@ function loadSection(path) {
                 toggle_sections(content);
             }
         };
+        // Sets up expand button
+        $('#expand-toggle').on( "click", function() {
+            toggle_sections(content);
+        });
     });
 }
 
@@ -279,20 +283,22 @@ $(document).ready(function(){
         $("#search-results").height(0);
     });
     // Sets up hide sidebar event listener
-    $('a.toggle-button').on( "click", function() {
+    $('#menu-toggle').on( "click", function() {
         console.log($('#sidebar').width());
         if($('#sidebar').width() == 350) {
             $('#sidebar').width(0);
-            $('a.toggle-button').css('margin-left', -30);
+            $('#menu-toggle').css('margin-left', -30);
+            $('#expand-toggle').css('margin-left', -30);
             $('#includedContent').css('margin-left', 10);
         } else {
             $('#sidebar').width(350);
-            $('a.toggle-button').css('margin-left', 310);
+            $('#menu-toggle').css('margin-left', 310);
+            $('#expand-toggle').css('margin-left', 310);
             $('#includedContent').css('margin-left', 350);
         }
     });
     // Hides sidebar on load if window is too small
     if($(window).width() < 450) {
-        $('a.toggle-button').click();
+        $('#menu-toggle').click();
     }
 });

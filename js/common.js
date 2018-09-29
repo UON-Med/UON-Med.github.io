@@ -1,4 +1,4 @@
-const buildDate = '02:13am, 30 Sep 2018';
+const buildDate = '02:30am, 30 Sep 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -275,9 +275,12 @@ $(document).ready(function() {
 
         // Sets up secret page navigator
         $("#custom-nav-btn").on('click', function() {
+            var origin = window.location.hostname;
+            if(origin == "localhost") origin = window.location.host;
+            var secret_url = window.location.protocol + '//' + origin + '/' + $("#custom-nav-input").val();
             $.ajax({
                 type: "GET",
-                url: $("#custom-nav-input").val(),
+                url: secret_url,
                 datatype: "xml",
                 error: function(jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status == 404) {
@@ -285,9 +288,7 @@ $(document).ready(function() {
                     }
                 },
                 success: function() {
-                    var origin = window.location.hostname;
-                    if(origin == "localhost") origin = window.location.host;
-                    window.location.href = window.location.protocol + '//' + origin + '/' + $("#custom-nav-input").val();
+                    window.location.href = secret_url;
                 }
             });
         });
