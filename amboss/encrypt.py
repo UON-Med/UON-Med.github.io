@@ -10,11 +10,11 @@ missing_folders = [
 
 if __name__ == "__main__":
 
-    if((len(sys.argv) < 2 or len(sys.argv) > 3) or (len(sys.argv) == 2 and (sys.argv[1] == '-i' or sys.argv[1] == '--index'))):
-        print("Run as \"python encrypt.py <password> <optional ['-i' or '--index']>\"")
+    if((len(sys.argv) < 3 or len(sys.argv) > 4) or (len(sys.argv) == 3 and (sys.argv[1] == '-i' or sys.argv[1] == '--index' or sys.argv[1] == '-a' or sys.argv[1] == '--all'))):
+        print("Run as \"python encrypt.py <password> <optional ['-i' or '--index'] or ['-a' or '--all']>\"")
         exit()
 
-    if(len(sys.argv) == 2):
+    if(len(sys.argv) == 3 and (sys.argv[2] == '--all' or sys.argv[2] == '-a')):
         # Encrypts all data
         root_dir = './content-source'
         for old_dir, subdirectories, files in os.walk(root_dir):
@@ -36,7 +36,7 @@ if __name__ == "__main__":
         for folder in missing_folders:
             pathlib.Path(folder).mkdir(parents=True, exist_ok=True) 
 
-    if((len(sys.argv) == 2) or (len(sys.argv) == 3 and (sys.argv[2] == '--index' or sys.argv[2] == '-i'))):
+    if(len(sys.argv) == 3 and (sys.argv[2] == '--index' or sys.argv[2] == '-i') or len(sys.argv) == 3 and (sys.argv[2] == '--all' or sys.argv[2] == '-a')):
         # Encrypts index
         # os.system('staticrypt index-source.html ' + str(sys.argv[1]) + ' -o index.html -f index_template.html')
         subprocess.call(["staticrypt", "index-source.html", str(sys.argv[1]), "-o", "index.html", "-f", "index_template.html"])

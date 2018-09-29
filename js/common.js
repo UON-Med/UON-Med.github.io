@@ -1,4 +1,4 @@
-const buildDate = '8:14pm, 04 Aug 2018';
+const buildDate = '1:52am, 30 Sep 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -273,6 +273,22 @@ $(document).ready(function() {
             return false; /*Cancel any bubbling*/
         });
 
+        // Sets up secret page navigator
+        $("#custom-nav-btn").on('click', function() {
+            $.ajax({
+                type: "GET",
+                url: $("#custom-nav-input").val(),
+                datatype: "xml",
+                error: function(jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status == 404) {
+                        M.toast({html: "Secret page not found!", classes: isMobile() ? '' : 'rounded'});
+                    }
+                },
+                success: function() {
+                    window.location.href = $("#custom-nav-input").val();
+                }
+            });
+        });
 
       } else if(this.dataset.include == "footer") {
       // For footer

@@ -4663,12 +4663,36 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_getAttributeOptions",
       value: function _getAttributeOptions() {
+        function makeUL(array) {
+            // Create the list element:
+            var list = document.createElement('ul');
+            for (var i = 0; i < array.length; i++) {
+                // Create the list item:
+                var item = document.createElement('li');
+                // Set its contents:
+                item.appendChild(document.createTextNode(array[i]));
+                // Add it to the list:
+                list.appendChild(item);
+            }
+            return list;
+        }
         var attributeOptions = {};
         var tooltipTextOption = this.el.getAttribute('miamed-smartip');
+        var tooltipJSON = JSON.parse(tooltipTextOption);
         var positionOption = this.el.getAttribute('data-position');
 
         if (tooltipTextOption) {
-          attributeOptions.html = '<pre>'+JSON.stringify(JSON.parse(tooltipTextOption), null, 2)+'</pre>';
+          // attributeOptions.html = '<pre>'+JSON.stringify(tooltipJSON, null, 2)+'</pre>';
+          attributeOptions.html = '';
+          if (tooltipJSON["master_phrase"]) {
+            attributeOptions.html += '<h1 style="font-size: 18px; margin-top: 0px; margin-bottom: 0px;">' + tooltipJSON["master_phrase"] + '</h1>';
+            attributeOptions.html += '<h2 style="font-size: 10px;">' + tooltipJSON["translation"] + '</h2>';
+            if (typeof tooltipJSON["synonym"] !== 'undefined' && tooltipJSON["synonym"].length > 0) {
+              attributeOptions.html += '<h2 style="font-size: 10px;">' + 'Synonyms:' + '</h2>';
+              attributeOptions.html += '<ul style="font-size: 10px;">' + makeUL(tooltipJSON["synonym"]).innerHTML + '</ul>';
+            }
+            attributeOptions.html += '<div style="font-size: 12px; margin-top: 10px; max-width: 80vw;">' + tooltipJSON["description"] + '</div>';            
+          }
         }
 
         if (positionOption) {

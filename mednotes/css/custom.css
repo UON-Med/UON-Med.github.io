@@ -20,6 +20,9 @@ body {
     /*min-height: 100%;*/
 }
 
+.Outline {
+    min-width: 0px !important;
+}
 
 .OutlineTitleArea {
     opacity: 0;

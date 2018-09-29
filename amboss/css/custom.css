@@ -1,9 +1,20 @@
+body {
+    padding-left: 40px !important;
+    min-width: 0px !important;
+}
+
 #includedContent {
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
     padding-top: 20px;
     margin-left: 350px;
 }
 
 #sidebar {
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
     height: 100%;
     width: 350px;
     position: fixed;
@@ -122,9 +133,9 @@ pre {
     padding: 10px 8px;
     font-size: 1rem;
     z-index: 2000;
-    background-color: transparent;
-    border-radius: 2px;
-    color: #fff;
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: #000000;
     min-height: 36px;
     line-height: 120%;
     opacity: 0;
@@ -136,13 +147,51 @@ pre {
     top: 0;
     pointer-events: none;
     visibility: hidden;
-    background-color: #323232;
+    background-color: #FFFFFF;
 }
 
 .material-tooltip {
     /*color: black;*/
     /*background-color: white;*/
     /*border-radius: 20px;*/
+}
+
+a.toggle-button {
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+*:focus {
+    outline: 0 !important;
+}
+a.toggle-button:hover {
+    background-color: black;
+    color: white;
+}
+.toggle-button {
+    position: absolute;
+    width: 30px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 30px;
+    margin-left: 310px;
+    margin-top: 20px;
+    border-width: 0px;
+    z-index: 1000;
+}
+
+.toggle-button-txt {
+    font-size: 16;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;       /* the same as your div height */
 }
 
 .badge {

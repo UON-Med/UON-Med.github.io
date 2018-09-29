@@ -132,10 +132,19 @@ function loadSection(path) {
         });
 
         // Does tooltips
+        // NOTE: Rest of tooltip/data processing is done in materialize-custom.js
         // Eg data to extract
         // miamed-smartip="{"master_phrase":"Auscultation of the heart","translation":"","synonym":[],"description":"The use of a stethoscope to examine the heart. Typically performed with the patient supine with slight elevation of the torso. Used to assess the location, timing, and quality of heart sounds and murmurs. Techniques to best hear specific sounds include auscultating at specific anatomical locations, using the stethoscope bell for low frequency sounds and the diaphragm for high frequency sounds, positioning the patient (e.g., leaning forward, lying in the left lateral position), and having the patient perform specific maneuvers (e.g., Valsalva, inspiration).","destinations":[{"label":"Cardiovascular examination \u2192 Chest auscultation","learning_card_xid":"rM0fJg","anchor_hash":"Za9278ae1af4d8ca05de426482744c148"}]}"
         $('[miamed-smartip]').tooltip({html: true}).each(function () {
-            $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
+            // $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
+        });
+        // Removes dead links
+        // TODO: Parse dead links into live local links for your dir structure
+        $('a').each(function() {
+            if(String($(this).attr('href')).startsWith("/us/library#xid=")) {
+                // $(this).attr('href', '');
+                $(this).removeAttr('href');
+            }
         });
 
         if(expand_by_default) {
@@ -269,4 +278,21 @@ $(document).ready(function(){
     $('#search-collapse').on( "click", function() {
         $("#search-results").height(0);
     });
+    // Sets up hide sidebar event listener
+    $('a.toggle-button').on( "click", function() {
+        console.log($('#sidebar').width());
+        if($('#sidebar').width() == 350) {
+            $('#sidebar').width(0);
+            $('a.toggle-button').css('margin-left', -30);
+            $('#includedContent').css('margin-left', 10);
+        } else {
+            $('#sidebar').width(350);
+            $('a.toggle-button').css('margin-left', 310);
+            $('#includedContent').css('margin-left', 350);
+        }
+    });
+    // Hides sidebar on load if window is too small
+    if($(window).width() < 450) {
+        $('a.toggle-button').click();
+    }
 });
