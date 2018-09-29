@@ -1,4 +1,4 @@
-const buildDate = '02:40am, 30 Sep 2018';
+const buildDate = '02:45am, 30 Sep 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -283,6 +283,9 @@ $(document).ready(function() {
                 protocol = "https:"
             }
             var secret_url = protocol + '//' + origin + '/' + $("#custom-nav-input").val();
+            if(!secret_url.endsWith("/")) {
+                secret_url += '/';
+            }
             $.ajax({
                 type: "GET",
                 url: secret_url,
