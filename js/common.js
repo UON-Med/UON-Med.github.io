@@ -1,4 +1,4 @@
-const buildDate = '02:30am, 30 Sep 2018';
+const buildDate = '02:40am, 30 Sep 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -276,8 +276,13 @@ $(document).ready(function() {
         // Sets up secret page navigator
         $("#custom-nav-btn").on('click', function() {
             var origin = window.location.hostname;
-            if(origin == "localhost") origin = window.location.host;
-            var secret_url = window.location.protocol + '//' + origin + '/' + $("#custom-nav-input").val();
+            var protocol = window.location.protocol;
+            if(origin == "localhost") {
+                origin = window.location.host;   
+            } else {
+                protocol = "https:"
+            }
+            var secret_url = protocol + '//' + origin + '/' + $("#custom-nav-input").val();
             $.ajax({
                 type: "GET",
                 url: secret_url,
