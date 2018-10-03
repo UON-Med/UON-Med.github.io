@@ -82,8 +82,8 @@ $(document).ready(function(){
             $(this).parent().children().slice(1).slideToggle();
         });
         $('.menu-nav-leaf').click(function(e) {
-            window.location.href = window.location.href.split("#")[0] + '#' + $(this).attr('data-endpoint').slice(1)
-            loadSection($(this).attr('data-endpoint'))
+            window.location.href = window.location.href.split("#")[0] + '#' + $(this).attr('data-endpoint').slice(1);
+            // loadSection($(this).attr('data-endpoint'));
         });
         expand_menu(anchor);
 
@@ -103,6 +103,9 @@ $(document).ready(function(){
         // Toggle button
         document.querySelector('.toggle-button').addEventListener('click', function() {
             slideout.toggle();
+        });
+        $(window).on('hashchange', function() {
+            loadSection(decodeURI(window.location.hash.substring(1)));
         });
     });
 
