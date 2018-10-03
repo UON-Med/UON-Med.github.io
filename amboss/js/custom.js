@@ -84,6 +84,20 @@ function toggle_sections(content, user_initiated=true) {
     }
 }
 
+function collapse_sidebar() {
+    $('#sidebar').width(0);
+    $('#menu-toggle').css('margin-left', -30);
+    $('#expand-toggle').css('margin-left', -30);
+    $('#includedContent').css('margin-left', 10);
+}
+
+function expand_sidebar() {
+    $('#sidebar').width(350);
+    $('#menu-toggle').css('margin-left', 310);
+    $('#expand-toggle').css('margin-left', 310);
+    $('#includedContent').css('margin-left', 350);
+}
+
 function loadSection(path) {
     // Underlines and focuses nav on new section
     expand_menu(path);
@@ -287,28 +301,26 @@ $(document).ready(function(){
     });
     // Sets up hide sidebar event listener
     $('#menu-toggle').on( "click", function() {
-        console.log($('#sidebar').width());
+        // console.log($('#sidebar').width());
         if($('#sidebar').width() == 350) {
-            $('#sidebar').width(0);
-            $('#menu-toggle').css('margin-left', -30);
-            $('#expand-toggle').css('margin-left', -30);
-            $('#includedContent').css('margin-left', 10);
+            collapse_sidebar();
         } else {
-            $('#sidebar').width(350);
-            $('#menu-toggle').css('margin-left', 310);
-            $('#expand-toggle').css('margin-left', 310);
-            $('#includedContent').css('margin-left', 350);
+            expand_sidebar();
         }
     });
     // Hides sidebar on load if window is too small
     if($(window).width() < 450) {
-        $('#menu-toggle').click();
+        // $('#menu-toggle').click();
+        collapse_sidebar();
     }
 
     $(window).on('hashchange', function() {
         // console.log(decodeURI(window.location.hash.substring(1)));
         $('#expand-toggle').off("click");
         loadSection(decodeURI(window.location.hash.substring(1)));
+        if($(window).width() < 450) {
+            collapse_sidebar();
+        }
     });
 
 });
