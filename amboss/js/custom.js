@@ -215,10 +215,43 @@ $(document).ready(function(){
 
     var options = {
         url: "search_data.json",
-        getValue: "w",
+        // getValue: "w",
+        getValue: function(element) {
+            return element.w;
+        },
         list: {
+            maxNumberOfElements: function() {
+                return Math.floor($(window).height()/$('#search-input').outerHeight());
+            },
+            sort: {
+                enabled: true,
+                method: function(a, b) {
+                    a = options.getValue(a);
+                    b = options.getValue(b);
+                    var phrase = $('#search-input').val();
+                    if(a.score(phrase) > b.score(phrase)) {
+                        return -1;
+                    }
+                    if(a.score(phrase) < b.score(phrase)) {
+                        return 1;
+                    }
+                    return 0;
+                }
+            },
             match: {
                 enabled: true,
+                method: function(element, phrase) {
+                    var threshold = 0.6
+                    if(element.split(' ').length > 1) {
+                        threshold = 0.3;
+                    }
+                    var result = element.score(phrase);
+                    if(result != null && result > threshold) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
             },
             // showAnimation: {
             //     type: "slide", //normal|slide|fade
@@ -278,7 +311,7 @@ $(document).ready(function(){
                 };
                 $('.search-results-item').click(function(e) {
                     // loadSection($(this).attr('data-endpoint'));
-                    window.location.hash = $(this).attr('data-endpoint');
+                    window.location.hash = $(this).attr('data-endpoint').substring(1);
                 });
                 var totalHeight = 0;
                 $("#search-results").children().each(function(){

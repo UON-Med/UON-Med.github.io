@@ -412,7 +412,11 @@ var EasyAutocomplete = (function(scope) {
 
 			builder.data = configuration.get("listLocation")(data);
 			builder.getValue = configuration.get("getValue");
-			builder.maxListSize = configuration.get("list").maxNumberOfElements;
+			if (typeof configuration.get("list").maxNumberOfElements === "number") {
+				builder.maxListSize = configuration.get("list").maxNumberOfElements;
+			} else {
+				builder.maxListSize = configuration.get("list").maxNumberOfElements();
+			}
 
 				
 			listBuilder.push(builder);

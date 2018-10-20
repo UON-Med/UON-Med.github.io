@@ -103,6 +103,12 @@ if __name__ == "__main__":
                                 search_data[word_set[0]].append(new_set)
                             else:
                                 search_data[word_set[0]] = [new_set]
+                        # Adds page title to search_data
+                        page_title = ' '.join(curr_path.split('/')[-1].split('.')[0].split(' ')[1:])
+                        if page_title in search_data:
+                            search_data[page_title].append((1, i))
+                        else:
+                            search_data[page_title] = [(1, i)]
                         # Adds to location lookup table
                         location_lookup.append(curr_path)
                         i += 1
@@ -123,8 +129,8 @@ if __name__ == "__main__":
     with open("./location_lookup.json", 'w') as fp:
         json.dump(location_lookup, fp, sort_keys=True, indent=None, separators=(',', ':'))
 
-    # with open("./search_data.json", 'w') as fp:
+    # with open("./search_data_indented.json", 'w') as fp:
     #     json.dump(search_data, fp, sort_keys=True, indent=4)
 
-    # with open("./location_lookup.json", 'w') as fp:
+    # with open("./location_lookup_indented.json", 'w') as fp:
     #     json.dump(location_lookup, fp, sort_keys=True, indent=4)
