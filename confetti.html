@@ -1,0 +1,52 @@
+<style>
+body {
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+}
+
+#canvas {
+    background: linear-gradient(#9FF781, #F3F781);
+}
+
+.copy {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+    font-family: 'Futura', 'Helvetica Neue', Helvetica;
+    color: #333;
+    
+    h1 {
+        margin: 0;
+        color: white;
+        letter-spacing: 1px;
+        font-size: 7vmin;
+        font-weight: 700;
+    }
+    
+    p {
+        margin: 0;
+    }
+}
+</style>
+<script src="./js/confetti-bundle.js"></script>
+
+<canvas id="canvas"></canvas>
+<div class="copy">
+    <h1>Confetti Cannon</h1>
+    <p>click, drag & release</p>
+</div>
+
+<script>
+    window.confetti = new ConfettiCannon(document.querySelector('canvas'), {
+      debug: true,
+      color: {
+        red:  [30, 255],
+        blue: [30, 230],
+        green: [30, 230]
+      },
+    });
+</script>
