@@ -1,4 +1,4 @@
-const buildDate = '03:21pm, 31 Oct 2018';
+const buildDate = '03:28pm, 31 Oct 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -274,7 +274,7 @@ $(document).ready(function() {
         });
 
         // Sets up secret page navigator
-        $("#custom-nav-btn").on('click', function() {
+        function nav_to_secret() {
             var origin = window.location.hostname;
             var protocol = window.location.protocol;
             if(origin == "localhost") {
@@ -317,6 +317,14 @@ $(document).ready(function() {
                     window.location.href = secret_url;
                 }
             });
+        }
+        $("#custom-nav-btn").on('click', function() {
+            nav_to_secret();
+        });
+        $("#custom-nav-input").keyup(function(event) {
+            if(event.keyCode === 13) {
+                nav_to_secret();
+            }
         });
 
       } else if(this.dataset.include == "footer") {
