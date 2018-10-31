@@ -1,4 +1,4 @@
-const buildDate = '03:01pm, 31 Oct 2018';
+const buildDate = '03:21pm, 31 Oct 2018';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -282,7 +282,8 @@ $(document).ready(function() {
             } else {
                 protocol = "https:"
             }
-            var secret_url = protocol + '//' + origin + '/' + $("#custom-nav-input").val();
+            var secret_url = protocol + '//' + origin + '/' + $("#custom-nav-input").val().toLowerCase();
+            var original_secret_url = secret_url;
             if(!secret_url.endsWith("/")) {
                 secret_url += '/';
             }
@@ -292,7 +293,24 @@ $(document).ready(function() {
                 datatype: "xml",
                 error: function(jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status == 404) {
-                        M.toast({html: "Secret page not found!", classes: isMobile() ? '' : 'rounded'});
+                        console.log(original_secret_url)
+                        if(!original_secret_url.endsWith(".html")) {
+                            original_secret_url += '.html';
+                            secret_url = original_secret_url;
+                        }
+                        $.ajax({
+                            type: "GET",
+                            url: secret_url,
+                            datatype: "xml",
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                if (jqXHR.status == 404) {
+                                    M.toast({html: "Secret page not found!", classes: isMobile() ? '' : 'rounded'});
+                                }
+                            },
+                            success: function() {
+                                window.location.href = secret_url;
+                            }
+                        });
                     }
                 },
                 success: function() {
