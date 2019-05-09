@@ -1,5 +1,6 @@
 import os
 import json
+import re
 
 # data = {'content':{'Clinical Knowledge':{}}}
 
@@ -69,6 +70,9 @@ def generate_tree(path, html=""):
     for file in sorted(os.listdir(path), key=custom_key):
         if(file == '.DS_Store'):
             continue
+        if("'" in file):
+            # file = re.escape(file)
+            file = file.replace("'", "&#39;")
         rel = path + "/" + file
         num = ''
         try:

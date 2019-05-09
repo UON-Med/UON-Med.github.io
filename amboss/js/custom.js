@@ -31,7 +31,7 @@ function expand_menu(path) {
     })
     path.forEach(function(el, idx, arr) {
         if(idx === arr.length - 1) {
-            $("a[id='"+el+"']").toggleClass("menu-nav-leaf-active");
+            $("a[id='"+escape(el)+"']").toggleClass("menu-nav-leaf-active");
         } else {
             $('#' + el).slideDown();
         }
@@ -304,8 +304,8 @@ $(document).ready(function(){
                         // Swaps "content-source" out for "content"
                         location_path = location_path.replace("content-source", "content");
                     }
-                    var new_result = "<div class='search-results-item' data-endpoint='/"+location_path+"''> ";
-                    new_result += "<a href='#"+location_path+"'>"+location+" <span class='badge'>"+results[i][0]+"</div></span></a>";
+                    var new_result = "<div class='search-results-item' data-endpoint='/"+escape(location_path)+"''> ";
+                    new_result += "<a href='#"+escape(location_path)+"'>"+location+" <span class='badge'>"+results[i][0]+"</div></span></a>";
                     new_result += "</div>";
                     $("#search-results").append(new_result);
                 };
