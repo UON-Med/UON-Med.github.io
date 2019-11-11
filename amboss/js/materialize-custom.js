@@ -4698,13 +4698,11 @@ $jscomp.polyfill = function (e, r, p, m) {
           // If speech bubble then need to decode URI from tooltip-content
           tooltipTextOption = decodeURIComponent(decodeURIComponent(this.el.getAttribute('tooltip-content')));
           tooltipTextOption = jQuery('<p>' + tooltipTextOption + '</p>').text();
-          console.log(tooltipTextOption)
           if (tooltipTextOption != null && tooltipTextOption != '') {
             // Checks if it is blank or not
             attributeOptions.html = '';
             attributeOptions.html += '<div style="font-size: 12px; max-width: 80vw;">' + tooltipTextOption + '</div>';
           } else {
-            console.log("boo")
             attributeOptions.html = '';
           }
         }
@@ -4712,7 +4710,6 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (positionOption) {
           attributeOptions.position = positionOption;
         }
-        console.log(attributeOptions)
         return attributeOptions;
       }
     }], [{

@@ -1,4 +1,4 @@
-const buildDate = '08:42pm, 11 Nov 2019';
+const buildDate = '10:11pm, 11 Nov 2019';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -175,12 +175,27 @@ function syntaxHighlight(json) {
     });
 }
 function loadChangelog() {
+  var commitsToLoad = 1000;
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "https://api.github.com/repos/UON-Med/UON-Med.github.io/commits?per_page=5",false);
+  xhr.open("GET", "https://api.github.com/repos/UON-Med/UON-Med.github.io/commits?per_page=" + String(commitsToLoad),false);
   xhr.send();
   var container = document.getElementById("changelog-container");
   if(xhr.status == 200) {
-    container.innerHTML = syntaxHighlight(JSON.parse(xhr.responseText));
+    container.innerHTML = '';
+    changelog = JSON.parse(xhr.responseText);
+    // container.innerHTML = syntaxHighlight(changelog);
+    // container.innerHTML += '';
+    changelog.forEach(function(entry, index, array) {
+      console.log(entry)
+      var commit = entry['commit'];
+      var commitDate = new Date(commit['committer']['date']);
+      container.innerHTML += '<a href="'+entry['html_url']+'" target="_blank" class="collection-item avatar"><img src="'+entry['committer']['avatar_url']+'" alt="" class="circle"><span class="title">'+commit['committer']['name']+'</span><p>'+commit['message']+'</p><div class="secondary-content">'+commitDate.toLocaleString('en-au')+'</div></a>';
+
+      if(array.length-1 == index) {
+        // Gets around async problems of above happening after capping </ul> can be added 
+        container.innerHTML = '<ul class="collection">' + container.innerHTML + '</ul>';
+      }
+    });
   } else {
     container.innerHTML = "Error, could not retrieve changelog.";
   }
