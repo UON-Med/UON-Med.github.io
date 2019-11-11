@@ -152,6 +152,8 @@ function loadSection(path) {
         $('[miamed-smartip]').tooltip({html: true}).each(function () {
             // $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
         });
+        $('[tooltip-content!=""][tooltip-content]').tooltip({html: true}).each(function () {
+        });
         // Removes dead links
         // TODO: Parse dead links into live local links for your dir structure
         $('a').each(function() {

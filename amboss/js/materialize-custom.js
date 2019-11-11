@@ -4678,10 +4678,11 @@ $jscomp.polyfill = function (e, r, p, m) {
         }
         var attributeOptions = {};
         var tooltipTextOption = this.el.getAttribute('miamed-smartip');
-        var tooltipJSON = JSON.parse(tooltipTextOption);
         var positionOption = this.el.getAttribute('data-position');
 
         if (tooltipTextOption) {
+          // If underlined word then parse JSON
+          var tooltipJSON = JSON.parse(tooltipTextOption);
           // attributeOptions.html = '<pre>'+JSON.stringify(tooltipJSON, null, 2)+'</pre>';
           attributeOptions.html = '';
           if (tooltipJSON["master_phrase"]) {
@@ -4691,13 +4692,27 @@ $jscomp.polyfill = function (e, r, p, m) {
               attributeOptions.html += '<h2 style="font-size: 10px;">' + 'Synonyms:' + '</h2>';
               attributeOptions.html += '<ul style="font-size: 10px;">' + makeUL(tooltipJSON["synonym"]).innerHTML + '</ul>';
             }
-            attributeOptions.html += '<div style="font-size: 12px; margin-top: 10px; max-width: 80vw;">' + tooltipJSON["description"] + '</div>';            
+            attributeOptions.html += '<div style="font-size: 12px; margin-top: 10px; max-width: 80vw;">' + tooltipJSON["description"] + '</div>';
+          }
+        } else {
+          // If speech bubble then need to decode URI from tooltip-content
+          tooltipTextOption = decodeURIComponent(decodeURIComponent(this.el.getAttribute('tooltip-content')));
+          tooltipTextOption = jQuery('<p>' + tooltipTextOption + '</p>').text();
+          console.log(tooltipTextOption)
+          if (tooltipTextOption != null && tooltipTextOption != '') {
+            // Checks if it is blank or not
+            attributeOptions.html = '';
+            attributeOptions.html += '<div style="font-size: 12px; max-width: 80vw;">' + tooltipTextOption + '</div>';
+          } else {
+            console.log("boo")
+            attributeOptions.html = '';
           }
         }
 
         if (positionOption) {
           attributeOptions.position = positionOption;
         }
+        console.log(attributeOptions)
         return attributeOptions;
       }
     }], [{
