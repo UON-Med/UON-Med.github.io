@@ -1,4 +1,4 @@
-const buildDate = '10:11pm, 11 Nov 2019';
+const buildDate = '10:16pm, 11 Nov 2019';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
@@ -186,7 +186,6 @@ function loadChangelog() {
     // container.innerHTML = syntaxHighlight(changelog);
     // container.innerHTML += '';
     changelog.forEach(function(entry, index, array) {
-      console.log(entry)
       var commit = entry['commit'];
       var commitDate = new Date(commit['committer']['date']);
       container.innerHTML += '<a href="'+entry['html_url']+'" target="_blank" class="collection-item avatar"><img src="'+entry['committer']['avatar_url']+'" alt="" class="circle"><span class="title">'+commit['committer']['name']+'</span><p>'+commit['message']+'</p><div class="secondary-content">'+commitDate.toLocaleString('en-au')+'</div></a>';
