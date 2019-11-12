@@ -1,4 +1,4 @@
-const buildDate = '10:16pm, 11 Nov 2019';
+const buildDate = '01:20pm, 12 Nov 2019';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;

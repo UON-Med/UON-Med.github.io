@@ -99,85 +99,113 @@ function expand_sidebar() {
 }
 
 function loadSection(path) {
+    var oldTitle = document.title;
+    document.title = "Loading...";
     // Underlines and focuses nav on new section
     expand_menu(path);
 
     var encoded_path = encodeURIComponent(path);
+    document.getElementById("includedContent").innerHTML = "Loading... (0%)";
+    // $("#includedContent").css("display", "none");
+    // $("#includedContent").load(encoded_path, function() {
+    $.ajax({
+        url: encoded_path, 
+        xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.addEventListener("progress", function(evt){
+                if(evt.lengthComputable) {
+                    var percentComplete = evt.loaded / evt.total;
+                    //Do something with download progress
+                    // console.log(percentComplete);
+                    document.getElementById("includedContent").innerHTML = "Loading... ("+String(Number.parseFloat(percentComplete*100).toPrecision(4))+"%)";                    
+                }
+            }, false);
+            return xhr;
+        },
+        success: function(result) {
 
-    $("#includedContent").load(encoded_path, function() {
-        $("#includedContent").css("display", "none");
-
-        // Initially loads 
-        var passphrase = MyLib.passphrase;
-        var encryptedMsg = $("#includedContent").html();
-        var encryptedHMAC = encryptedMsg.substring(0, 64)
-        var encryptedHTML = encryptedMsg.substring(64);
-        var decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
-        if(decryptedHMAC !== encryptedHMAC) {
-            alert('Bad passphrase! Reload page to decrypt.');
-            return;
-        }
-
-        var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
-        document.getElementById("includedContent").innerHTML = plainHTML;
-
-        $("#includedContent").fadeIn();
-
-        // ---------------------------------------------
-        // All content should be loaded/decrypted by now
-        // ---------------------------------------------
-
-
-        // Sets up content dict
-        var content = get_content();
-
-        $('header.Frame.sticky-element').click(function(){
-            // Finds section selected
-            var section_id = $(this).attr('ng-click').replace("NGLearningCardCollapse.toggle('","").replace("')","");
-            // Finds corresponding content
-
-            if($('#' + section_id).hasClass('opened')) {
-                // Is open right now, need to toggle it closed
-                collapse_section(content, section_id);
-            } else {
-                // Is closed right now, need to toggle open
-                expand_section(content, section_id);
+            // Initially loads 
+            var passphrase = MyLib.passphrase;
+            // var encryptedMsg = $("#includedContent").html();
+            var encryptedMsg = result;
+            var encryptedHMAC = encryptedMsg.substring(0, 64)
+            var encryptedHTML = encryptedMsg.substring(64);
+            var decryptedHMAC = CryptoJS.HmacSHA256(encryptedHTML, CryptoJS.SHA256(passphrase).toString()).toString();
+            if(decryptedHMAC !== encryptedHMAC) {
+                document.title = "Protected Page";
+                alert('Bad passphrase! Reload page to decrypt.');
+                return;
             }
-        });
 
-        // Does tooltips
-        // NOTE: Rest of tooltip/data processing is done in materialize-custom.js
-        // Eg data to extract
-        // miamed-smartip="{"master_phrase":"Auscultation of the heart","translation":"","synonym":[],"description":"The use of a stethoscope to examine the heart. Typically performed with the patient supine with slight elevation of the torso. Used to assess the location, timing, and quality of heart sounds and murmurs. Techniques to best hear specific sounds include auscultating at specific anatomical locations, using the stethoscope bell for low frequency sounds and the diaphragm for high frequency sounds, positioning the patient (e.g., leaning forward, lying in the left lateral position), and having the patient perform specific maneuvers (e.g., Valsalva, inspiration).","destinations":[{"label":"Cardiovascular examination \u2192 Chest auscultation","learning_card_xid":"rM0fJg","anchor_hash":"Za9278ae1af4d8ca05de426482744c148"}]}"
-        $('[miamed-smartip]').tooltip({html: true}).each(function () {
-            // $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
-        });
-        $('[tooltip-content!=""][tooltip-content]').tooltip({html: true}).each(function () {
-        });
-        // Removes dead links
-        // TODO: Parse dead links into live local links for your dir structure
-        $('a').each(function() {
-            if(String($(this).attr('href')).startsWith("/us/library#xid=")) {
-                // $(this).attr('href', '');
-                $(this).removeAttr('href');
+            var pathArray = path.split('/');
+            // Gets name of page
+            var leafString = pathArray[pathArray.length-1].split('.')[0].split(' ');
+            // Removes leading number
+            leafString.shift();
+            leafString = leafString.join(' ');
+            // Sets page title
+            document.title = leafString;
+            var plainHTML = CryptoJS.AES.decrypt(encryptedHTML, passphrase).toString(CryptoJS.enc.Utf8);
+            document.getElementById("includedContent").innerHTML = plainHTML;
+
+            $("#includedContent").fadeIn();
+
+            // ---------------------------------------------
+            // All content should be loaded/decrypted by now
+            // ---------------------------------------------
+
+
+            // Sets up content dict
+            var content = get_content();
+
+            $('header.Frame.sticky-element').click(function(){
+                // Finds section selected
+                var section_id = $(this).attr('ng-click').replace("NGLearningCardCollapse.toggle('","").replace("')","");
+                // Finds corresponding content
+
+                if($('#' + section_id).hasClass('opened')) {
+                    // Is open right now, need to toggle it closed
+                    collapse_section(content, section_id);
+                } else {
+                    // Is closed right now, need to toggle open
+                    expand_section(content, section_id);
+                }
+            });
+
+            // Does tooltips
+            // NOTE: Rest of tooltip/data processing is done in materialize-custom.js
+            // Eg data to extract
+            // miamed-smartip="{"master_phrase":"Auscultation of the heart","translation":"","synonym":[],"description":"The use of a stethoscope to examine the heart. Typically performed with the patient supine with slight elevation of the torso. Used to assess the location, timing, and quality of heart sounds and murmurs. Techniques to best hear specific sounds include auscultating at specific anatomical locations, using the stethoscope bell for low frequency sounds and the diaphragm for high frequency sounds, positioning the patient (e.g., leaning forward, lying in the left lateral position), and having the patient perform specific maneuvers (e.g., Valsalva, inspiration).","destinations":[{"label":"Cardiovascular examination \u2192 Chest auscultation","learning_card_xid":"rM0fJg","anchor_hash":"Za9278ae1af4d8ca05de426482744c148"}]}"
+            $('[miamed-smartip]').tooltip({html: true}).each(function () {
+                // $("#" + $(this).data('tooltip-id')).find(".backdrop").addClass('card');
+            });
+            $('[tooltip-content!=""][tooltip-content]').tooltip({html: true}).each(function () {
+            });
+            // Removes dead links
+            // TODO: Parse dead links into live local links for your dir structure
+            $('a').each(function() {
+                if(String($(this).attr('href')).startsWith("/us/library#xid=")) {
+                    // $(this).attr('href', '');
+                    $(this).removeAttr('href');
+                }
+            });
+
+            if(expand_by_default) {
+                toggle_sections(content, user_initiated=false);
             }
-        });
 
-        if(expand_by_default) {
-            toggle_sections(content, user_initiated=false);
-        }
-
-        // Adds expand/contract shortcut
-        window.onkeydown = function(e) {
-            if (e.keyCode == 32 && e.target == document.body) {
-                e.preventDefault();
+            // Adds expand/contract shortcut
+            window.onkeydown = function(e) {
+                if (e.keyCode == 32 && e.target == document.body) {
+                    e.preventDefault();
+                    toggle_sections(content);
+                }
+            };
+            // Sets up expand button
+            $('#expand-toggle').on( "click", function() {
                 toggle_sections(content);
-            }
-        };
-        // Sets up expand button
-        $('#expand-toggle').on( "click", function() {
-            toggle_sections(content);
-        });
+            });
+        }
     });
 }
 
