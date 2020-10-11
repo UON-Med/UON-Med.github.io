@@ -13,6 +13,25 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function decodeURIComponentSafe(uri, mod) {
+    var out = new String(),
+        arr,
+        i = 0,
+        l,
+        x;
+    typeof mod === "undefined" ? mod = 0 : 0;
+    arr = uri.split(/(%(?:d0|d1)%.{2})/);
+    for (l = arr.length; i < l; i++) {
+        try {
+            x = decodeURIComponent(arr[i]);
+        } catch (e) {
+            x = mod ? arr[i].replace(/%(?!\d+)/g, '%25') : arr[i];
+        }
+        out += x;
+    }
+    return out;
+}
+
 /*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
 (function (factory) {
   window.cash = factory();
@@ -4696,7 +4715,7 @@ $jscomp.polyfill = function (e, r, p, m) {
           }
         } else {
           // If speech bubble then need to decode URI from tooltip-content
-          tooltipTextOption = decodeURIComponent(decodeURIComponent(this.el.getAttribute('tooltip-content')));
+          tooltipTextOption = decodeURIComponentSafe(decodeURIComponentSafe(this.el.getAttribute('tooltip-content')));
           tooltipTextOption = jQuery('<p>' + tooltipTextOption + '</p>').text();
           if (tooltipTextOption != null && tooltipTextOption != '') {
             // Checks if it is blank or not

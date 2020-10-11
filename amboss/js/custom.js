@@ -31,7 +31,7 @@ function expand_menu(path) {
     })
     path.forEach(function(el, idx, arr) {
         if(idx === arr.length - 1) {
-            $("a[id='"+escape(el)+"']").toggleClass("menu-nav-leaf-active");
+            $("a[id='"+encodeURIComponent(el)+"']").toggleClass("menu-nav-leaf-active");
         } else {
             $('#' + el).slideDown();
         }
@@ -173,7 +173,7 @@ function loadSection(path) {
             });
 
             // Does tooltips
-            // NOTE: Rest of tooltip/data processing is done in materialize-custom.js
+            // NOTE: Rest of tooltip/data processing is done in materialize-custom.js --> search for "decodeURIComponent"
             // Eg data to extract
             // miamed-smartip="{"master_phrase":"Auscultation of the heart","translation":"","synonym":[],"description":"The use of a stethoscope to examine the heart. Typically performed with the patient supine with slight elevation of the torso. Used to assess the location, timing, and quality of heart sounds and murmurs. Techniques to best hear specific sounds include auscultating at specific anatomical locations, using the stethoscope bell for low frequency sounds and the diaphragm for high frequency sounds, positioning the patient (e.g., leaning forward, lying in the left lateral position), and having the patient perform specific maneuvers (e.g., Valsalva, inspiration).","destinations":[{"label":"Cardiovascular examination \u2192 Chest auscultation","learning_card_xid":"rM0fJg","anchor_hash":"Za9278ae1af4d8ca05de426482744c148"}]}"
             $('[miamed-smartip]').tooltip({html: true}).each(function () {
@@ -334,8 +334,8 @@ $(document).ready(function(){
                         // Swaps "content-source" out for "content"
                         location_path = location_path.replace("content-source", "content");
                     }
-                    var new_result = "<div class='search-results-item' data-endpoint='/"+escape(location_path)+"''> ";
-                    new_result += "<a href='#"+escape(location_path)+"'>"+location+" <span class='badge'>"+results[i][0]+"</div></span></a>";
+                    var new_result = "<div class='search-results-item' data-endpoint='/"+decodeURIComponent(location_path)+"''> ";
+                    new_result += "<a href='#"+decodeURIComponent(location_path)+"'>"+location+" <span class='badge'>"+results[i][0]+"</div></span></a>";
                     new_result += "</div>";
                     $("#search-results").append(new_result);
                 };
