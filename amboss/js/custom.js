@@ -393,8 +393,27 @@ $(document).ready(function(){
         if($(window).width() < 450) {
             collapse_sidebar();
         }
-        _ga.push(['_trackPageview', "/" + window.location.hash.substr(1)]);
-        // ga('send', 'pageview');
-    });
+        // ga('send', 'pageview', {
+        //     'page': location.pathname + location.search  + location.hash
+        // });
+        var pathArray = decodeURI(location.hash).split('/');
+        // Gets name of page
+        decodedPath = '';
+        // Figures out path to send to Google Analytics
+        // i = 2 to skip "#content" and "Clinical Knowledge"
+        for(var i = 2; i < pathArray.length; i++) {
+            var branchString = pathArray[i];
+            branchString = branchString.split('.')[0].split(' ');
+            branchString.shift();
+            branchString = branchString.join(' ');
+            decodedPath += decodeURI(branchString);
+            if(i != pathArray.length - 1) {
+                decodedPath += ' / '
+            }
+        }
+        ga('send', 'pageview', {
+            'page': decodedPath
+        });
 
+    });
 });
