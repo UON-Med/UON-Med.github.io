@@ -1,10 +1,19 @@
-const buildDate = '05:00pm, 11 Oct 2020';
+const buildDate = '01:24am, 23 Nov 2020';
 
 const tooSmallForJMP = 850;
 const atTopOfPage = 100;
 var logoLeftMargin = 0;
 var AnimationComplete = true;
 var instance_tabs = null;
+
+// Google analytics
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-179009333-1', 'auto');
+ga('send', 'pageview');
 
 function scrollTop() {
     return Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
