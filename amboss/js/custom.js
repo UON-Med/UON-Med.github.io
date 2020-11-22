@@ -5,7 +5,34 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-179009333-1', 'auto');
-ga('send', 'pageview');
+
+function updateGoogleAnalytics() {
+    var pathArray = decodeURI(location.hash).split('/');
+    // Gets name of page
+    decodedPath = '';
+    // Figures out path to send to Google Analytics
+    // i = 2 to skip "#content" and "Clinical Knowledge"
+    pageTitle = 'JMP Textbook';
+    for(var i = 2; i < pathArray.length; i++) {
+        var branchString = pathArray[i];
+        branchString = branchString.split('.')[0].split(' ');
+        branchString.shift();
+        branchString = branchString.join(' ');
+        decodedPath += decodeURI(branchString);
+        if(i != pathArray.length - 1) {
+            decodedPath += '/'
+        } else {
+            pageTitle = branchString;
+        }
+    }
+    ga('send', 'pageview', {
+        'page': decodedPath,
+        'title': branchString
+    });
+}
+
+// ga('send', 'pageview');
+updateGoogleAnalytics();
 
 // -----------
 // Global vars
@@ -393,27 +420,6 @@ $(document).ready(function(){
         if($(window).width() < 450) {
             collapse_sidebar();
         }
-        // ga('send', 'pageview', {
-        //     'page': location.pathname + location.search  + location.hash
-        // });
-        var pathArray = decodeURI(location.hash).split('/');
-        // Gets name of page
-        decodedPath = '';
-        // Figures out path to send to Google Analytics
-        // i = 2 to skip "#content" and "Clinical Knowledge"
-        for(var i = 2; i < pathArray.length; i++) {
-            var branchString = pathArray[i];
-            branchString = branchString.split('.')[0].split(' ');
-            branchString.shift();
-            branchString = branchString.join(' ');
-            decodedPath += decodeURI(branchString);
-            if(i != pathArray.length - 1) {
-                decodedPath += ' / '
-            }
-        }
-        ga('send', 'pageview', {
-            'page': decodedPath
-        });
-
+        updateGoogleAnalytics();
     });
 });
